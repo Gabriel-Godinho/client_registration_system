@@ -25,12 +25,6 @@ buildNumber.properties
 .mvn/wrapper/maven-wrapper.jar
 
 ##############################
-## Visual Studio Code
-##############################
-.vscode/
-.code-workspace
-
-##############################
 ## OS X
 ##############################
 .DS_Store
