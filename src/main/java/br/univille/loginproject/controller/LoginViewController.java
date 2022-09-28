@@ -35,9 +35,9 @@ import javax.swing.JOptionPane;
 
 import br.univille.loginproject.entitys.Login;
 import br.univille.loginproject.service.LoginService;
-import br.univille.loginproject.view.ItWorked;
 import br.univille.loginproject.view.LoginView;
 import br.univille.loginproject.view.RegisterView;
+import br.univille.sistema.view.ListagemClientes;
 
 public class LoginViewController implements ActionListener, KeyListener{
 
@@ -82,7 +82,7 @@ public class LoginViewController implements ActionListener, KeyListener{
 
         if (ls.enter(username)) {
             lv.setVisible(false);
-            ItWorked worked = new ItWorked();
+            ListagemClientes list = new ListagemClientes();
         } else {
             JOptionPane.showMessageDialog(null, "Usuário não registrado!", "Ops!", JOptionPane.ERROR_MESSAGE);
         }
