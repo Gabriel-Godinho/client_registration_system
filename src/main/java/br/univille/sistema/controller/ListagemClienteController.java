@@ -38,11 +38,7 @@ import br.univille.sistema.service.ClientService;
 import br.univille.sistema.view.FormularioCliente;
 import br.univille.sistema.view.ListagemClientes;
 
-public /* interface */ class ListagemClienteController implements ActionListener{    
-    // INTERFACE - componente da liguagem orientada a objetos responsável pela padronização entre duas classes
-    // Interface é responsável por ligar duas classes através de uma "assinatura"
-    // Para uma classe utilizar o ActionListener é obrigatório ter o método abaixo escrito em 1995
-    // Funciona como um contrato onde é necessário ter uma assinatura
+public class ListagemClienteController implements ActionListener{    
 
     private ClientService service = new ClientService();
 

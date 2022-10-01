@@ -45,16 +45,16 @@ public class ClienteDAO {
         
         try {
             Connection conn = ConexaoDB.getInstance().getConn();
-            String sql = "SELECT * FROM cliente";
+            String sql = "SELECT * FROM clients";
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()){
                 Cliente newClient = new Cliente();
                 newClient.setId(rs.getLong("id"));
-                newClient.setName(rs.getString("nome"));
+                newClient.setName(rs.getString("full_name"));
                 newClient.setCPF(rs.getString("cpf"));
-                newClient.setBirthDate(rs.getDate("datanascimento"));
+                newClient.setBirthDate(rs.getDate("birthdate"));
                 list.add(newClient);
             }
 
@@ -72,15 +72,15 @@ public class ClienteDAO {
             Connection conn = ConexaoDB.getInstance().getConn();
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
-            if (client.getId() == 0) {
-                String insert = "INSERT INTO cliente(nome, cpf, datanascimento) VALUES (?, ?, ?)";
+            if (client.getId() == 0 || client.getId() == -1) {
+                String insert = "INSERT INTO clients(full_name, cpf, birthdate) VALUES (?, ?, ?)";
                 PreparedStatement ps = conn.prepareStatement(insert);
                 ps.setString(1, client.getName());
                 ps.setString(2, client.getCPF());
                 ps.setString(3, sdf.format(client.getBirthDate()));
                 ps.executeUpdate();
             } else {
-                String update = "UPDATE cliente SET nome = ?, cpf = ?, datanascimento = ? WHERE id = ?";
+                String update = "UPDATE clients SET full_name = ?, cpf = ?, birthdate = ? WHERE id = ?";
                 PreparedStatement ps = conn.prepareStatement(update);
                 ps.setString(1, client.getName());
                 ps.setString(2, client.getCPF());
@@ -102,7 +102,7 @@ public class ClienteDAO {
  
         try {
             Connection conn = ConexaoDB.getInstance().getConn();
-            String sql = "SELECT * FROM cliente WHERE id = ?";
+            String sql = "SELECT * FROM clients WHERE id = ?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setLong(1, id);
 
@@ -111,9 +111,9 @@ public class ClienteDAO {
             if (rs.next()) {
                 // Hidratação do objeto
                 client.setId(rs.getLong("id"));
-                client.setName(rs.getString("nome"));
+                client.setName(rs.getString("full_name"));
                 client.setCPF(rs.getString("cpf"));
-                client.setBirthDate(sdf.parse(rs.getString("datanascimento")));
+                client.setBirthDate(sdf.parse(rs.getString("birthdate")));
             }
 
         } catch (SQLException e) {
@@ -130,7 +130,7 @@ public class ClienteDAO {
 
         try {
             Connection conn = ConexaoDB.getInstance().getConn();
-            String delete = "DELETE FROM cliente WHERE id = ?";
+            String delete = "DELETE FROM clients WHERE id = ?";
             PreparedStatement ps = conn.prepareStatement(delete);
             ps.setLong(1, id);
             ps.executeUpdate();

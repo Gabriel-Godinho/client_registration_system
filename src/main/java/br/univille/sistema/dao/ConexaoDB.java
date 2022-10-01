@@ -30,10 +30,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConexaoDB {
-    // Singleton -> Design pattern
-    // refactoring guru design patterns;
+
     private Connection conn;
-    private String stringConexao = "jdbc:mariadb://localhost/dbsistema";
+    private String stringConexao = "jdbc:mariadb://localhost/loginsistem";
     private String user = "root";
     private String pass = "univille";
     private static ConexaoDB instance;

@@ -51,7 +51,6 @@ public class FormularioCliente extends JDialog {
     private JPanel panelButton = new JPanel();
     private JButton ok = new JButton("OK");
     private JButton cancelar = new JButton("Cancelar");
-    private JTextField txtid = new JTextField(8);
     private JTextField txtNome = new JTextField(20);
     private JTextField txtCpf = new JTextField(10);
     private JFormattedTextField txtBirth = new JFormattedTextField(12);
@@ -62,7 +61,9 @@ public class FormularioCliente extends JDialog {
     private Cliente cliente = new Cliente();   
     
     public Cliente getCliente() {
+
         return cliente;
+
     }
 
     public void setCliente(Cliente cliente) {
@@ -72,7 +73,6 @@ public class FormularioCliente extends JDialog {
     public FormularioCliente(Cliente cliente) {
         
         this.cliente = cliente;
-        txtid.setText(String.valueOf(cliente.getId()));
         txtNome.setText(cliente.getName());
         txtCpf.setText(cliente.getCPF());
 
@@ -112,15 +112,6 @@ public class FormularioCliente extends JDialog {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.insets = new InsetsUIResource(5, 5, 5, 5);
 
-        gbc.gridx = 0; // Coluna 0
-        gbc.gridy = 0; // Linha 0
-        // gbc.weightx = 0.20; // Largura em percentual
-        panelCenter.add(new JLabel("ID:"), gbc);
-         gbc.gridx = 1; // Coluna 1
-        gbc.gridy = 0; // Linha 0
-        // gbc.weightx = 0.80; // Largura em percentual
-        panelCenter.add(txtid, gbc); 
-
         gbc.gridx = 0;
         gbc.gridy = 1;
         panelCenter.add(new JLabel("Nome:"), gbc);
@@ -131,14 +122,6 @@ public class FormularioCliente extends JDialog {
         gbc.gridx = 0;
         gbc.gridy = 2;
         panelCenter.add(new JLabel("CPF:"), gbc);
-        
-        // Foi necessário retirar a máscara
-        /*try {
-            maskCpf = new MaskFormatter("###.###.###-##");
-            txtCpf = new JFormattedTextField(maskCpf);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        } */
                 
         gbc.gridx = 1;
         gbc.gridy = 2;
@@ -161,18 +144,13 @@ public class FormularioCliente extends JDialog {
     }
 
     public Cliente update(Cliente cliente) throws ValorInvalidoException{
-        // Atualiza com os dados da tela (binding)
         
-        try {
-            cliente.setId(Long.parseLong(txtid.getText()));
-        } catch (NumberFormatException e) {
-            throw new ValorInvalidoException("O Campo ID deve conter somente números!", e, "ID");
-        }
-               
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
+        // Atualiza com os dados da tela (binding)              
         cliente.setName(txtNome.getText());
         cliente.setCPF(txtCpf.getText());
         
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         try {
             cliente.setBirthDate(sdf.parse(txtBirth.getText()));
         } catch (ParseException e) {
@@ -181,4 +159,5 @@ public class FormularioCliente extends JDialog {
 
         return cliente;
     }
+
 }

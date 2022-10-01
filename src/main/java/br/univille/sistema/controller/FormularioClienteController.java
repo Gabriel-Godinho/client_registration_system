@@ -35,11 +35,13 @@ import javax.swing.JOptionPane;
 
 import br.univille.sistema.entity.Cliente;
 import br.univille.sistema.exceptions.ValorInvalidoException;
+import br.univille.sistema.service.ClientService;
 import br.univille.sistema.view.FormularioCliente;
 
 public class FormularioClienteController implements ActionListener, KeyListener{
 
     private FormularioCliente formcli;
+    private ClientService service = new ClientService();
     
     public FormularioClienteController(FormularioCliente formcli) {
 
@@ -65,18 +67,15 @@ public class FormularioClienteController implements ActionListener, KeyListener{
     }
     
     private void okClick() {
-
-        int response = JOptionPane.showConfirmDialog(null, "Tem certeza?", "Confirmação", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
         
-        if (response == JOptionPane.YES_OPTION) {
-            try {
-                var cliente = formcli.getCliente();
-                formcli.update(cliente);
-                this.valid(cliente);      
-                formcli.dispose();
-            } catch (ValorInvalidoException e) {
-                JOptionPane.showMessageDialog(null, e.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
-            }
+        try {
+            var client = formcli.getCliente();
+            formcli.update(client);
+            validation(client);
+            service.save(client);      
+            formcli.dispose();
+        } catch (ValorInvalidoException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
         }
 
     }
@@ -87,7 +86,7 @@ public class FormularioClienteController implements ActionListener, KeyListener{
 
     }
 
-    private void valid(Cliente cliente) throws ValorInvalidoException{
+    private void validation(Cliente cliente) throws ValorInvalidoException{
         
         if (cliente.getName() == null || cliente.getName().isEmpty()) {
             throw new ValorInvalidoException("O nome não pode ser deixado em branco!", null, "NOME");
