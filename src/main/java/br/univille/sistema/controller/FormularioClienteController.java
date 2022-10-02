@@ -72,7 +72,10 @@ public class FormularioClienteController implements ActionListener, KeyListener{
             var client = formcli.getCliente();
             formcli.update(client);
             validation(client);
-            service.save(client);      
+            
+            if (client.getId() < 0)
+                service.save(client);
+
             formcli.dispose();
         } catch (ValorInvalidoException e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
