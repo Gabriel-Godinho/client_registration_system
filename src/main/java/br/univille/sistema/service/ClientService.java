@@ -30,27 +30,27 @@ import java.util.ArrayList;
 import br.univille.sistema.dao.ClienteDAO;
 import br.univille.sistema.entity.Cliente;
 
-public class ClientService {
+public final class ClientService {
     
-    private ClienteDAO clienteDAO = new ClienteDAO();
+    private ClienteDAO daoClient = new ClienteDAO();
 
-    public ArrayList<Cliente> getAllClientes() {
+    public ArrayList<Cliente> getAllClients() {
 
-        return clienteDAO.getAll();
+        return daoClient.getAll();
 
     }
 
-    public Cliente save(Cliente cliente) {
+    public Cliente save(Cliente client) {
 
-        clienteDAO.save(cliente);
+        daoClient.save(client);
 
-        return cliente;
+        return client;
         
     }
 
-    public void remove(Cliente cliente) {
+    public void remove(Cliente client) {
 
-        clienteDAO.delete(cliente.getId());
+        daoClient.delete(client.getId());
         
     }
 }

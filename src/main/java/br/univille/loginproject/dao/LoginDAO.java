@@ -42,7 +42,8 @@ public class LoginDAO {
      * @param login
      * @return
      */
-    public boolean enter(Login login) {      
+    public final boolean enter(Login login) {   
+           
         try {
             Connection connec = ConnectionDB.getInstance().getConn();
             String sql = "SELECT * FROM logins WHERE username = ? AND pass = ?";
@@ -59,6 +60,7 @@ public class LoginDAO {
         }
 
         return false;
+
     }
 
     /**
@@ -66,7 +68,8 @@ public class LoginDAO {
      * e a senha digitados na tela de registro dentro do banco de dados.
      * @param login
     */
-    public void register(Login login) {
+    public final void register(Login login) {
+
         try {
             Connection connec = ConnectionDB.getInstance().getConn();
             String sql = "INSERT INTO logins(username, pass) VALUES (?, ?)";
@@ -77,7 +80,8 @@ public class LoginDAO {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }        
+        } 
+
     }
 
     /**
@@ -87,7 +91,8 @@ public class LoginDAO {
      * @param user
      * @return
      */
-    public boolean compare(String user) {
+    public final boolean compare(String user) {
+
         try {
             Connection connec = ConnectionDB.getInstance().getConn();
             String sql = "SELECT * FROM logins WHERE username = ?";
@@ -103,5 +108,7 @@ public class LoginDAO {
         }
 
         return false;
+
     }
+
 }

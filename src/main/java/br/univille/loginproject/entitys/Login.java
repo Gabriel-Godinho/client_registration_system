@@ -25,11 +25,12 @@
  */
 package br.univille.loginproject.entitys;
 
-public class Login {
+public final class Login {
     
     private String user;
     private String password;
     
+    // GET E SET - USUÁRIO
     public String getUser() {
         return user;
     }
@@ -37,8 +38,10 @@ public class Login {
 
         if (!user.equals(null) || !user.equals(""))
             this.user = user;
+
     }
     
+    // GET E SET - SENHA
     public String getPassword() {
         return password;
     }
@@ -46,5 +49,7 @@ public class Login {
         
         if(!password.equals(null) || !password.equals(""))
             this.password = password;
+
     }
+
 }

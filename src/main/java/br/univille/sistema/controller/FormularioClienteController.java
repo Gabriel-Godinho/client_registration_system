@@ -60,7 +60,7 @@ public class FormularioClienteController implements ActionListener, KeyListener{
                 break;
         
             case "cancelar":
-                cancelarClick();
+                cancelClick();
                 break;
         }    
 
@@ -80,18 +80,18 @@ public class FormularioClienteController implements ActionListener, KeyListener{
 
     }
 
-    private void cancelarClick() {
+    private void cancelClick() {
 
         formcli.dispose();
 
     }
 
-    private void validation(Cliente cliente) throws ValorInvalidoException{
+    private void validation(Cliente client) throws ValorInvalidoException{
         
-        if (cliente.getName() == null || cliente.getName().isEmpty()) {
+        if (client.getName().equals(null) || client.getName().isEmpty()) {
             throw new ValorInvalidoException("O nome não pode ser deixado em branco!", null, "NOME");
         }
-        if (cliente.getCPF().isEmpty()) {
+        if (client.getCPF().equals(null) || client.getCPF().isEmpty()) {
             throw new ValorInvalidoException("O CPF não pode ser deixado em branco!", null, "CPF");
         }
 

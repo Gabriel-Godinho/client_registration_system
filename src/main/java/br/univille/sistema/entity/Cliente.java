@@ -27,30 +27,27 @@ package br.univille.sistema.entity;
 
 import java.util.Date;
 
-public class Cliente {
+public final class Cliente {
     
-    // Atributos
     private long id;
     private String name;
     private String cpf;
     private Date birthDate;
 
-    // Construtores
     public Cliente() {
-        this.id = -1;
+
     }
 
-    public Cliente(String nome, String CPF) {
+    public Cliente(String name, String CPF) {
         
-        this();
-        
-        if(!name.equals("") || !CPF.equals("")) {
-            this.name = nome;
+        if(!name.equals(null) || !CPF.equals(null)) {
+            this.name = name;
             this.cpf = CPF;
         }
+
     }
 
-    // GETTER E SETTER - id
+    // GET E SET - id
     public long getId() {
         return id;
     }
@@ -59,7 +56,7 @@ public class Cliente {
         this.id = id;
     }
 
-    // GETTER E SETTER - name
+    // GET E SET - name
     public String getName() {
         return name;
     }
@@ -68,7 +65,7 @@ public class Cliente {
         this.name = name;
     }
 
-    // GETTER E SETTER - CPF
+    // GET E SET - CPF
     public String getCPF() {
         return cpf;
     }
@@ -77,7 +74,7 @@ public class Cliente {
         cpf = CPF;
     }
 
-    // GETTER E SETTER - birthDate
+    // GET E SET - birthDate
     public Date getBirthDate() {
         return birthDate;
     }

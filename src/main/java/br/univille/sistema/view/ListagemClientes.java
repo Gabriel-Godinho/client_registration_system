@@ -41,58 +41,65 @@ public class ListagemClientes extends JFrame{
 
     private JScrollPane panelCenter;
     private JPanel panelSouth = new JPanel();
-    private JButton btnNovo = new JButton("Novo");
-    private JButton btnAlterar = new JButton("Alterar");
-    private JButton btnExcluir = new JButton("Excluir");
+    private JButton btnNew = new JButton("Novo");
+    private JButton btnUpdate = new JButton("Alterar");
+    private JButton btnDelete = new JButton("Excluir");
     private ListagemClienteController controller = new ListagemClienteController(this);
     private TabelaClienteModel model = new TabelaClienteModel(controller); // Instância do controlador;
     private JTable tabel = new JTable(model);
     
     public ListagemClientes() {
+
         setSize(900, 700);
         setTitle("Listagem de Clientes");
         setLocationRelativeTo(null); // Cria a janela no meio da tela
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        createPanel(); // Método
+        createPanel();
         setVisible(true);
-    }
 
-    public void updateTable() {
-        model.fireTableDataChanged();
-    }
-
-    public int rowNumber() {
-        return tabel.getSelectedRow();
     }
 
     private void createPanel() {
-        panelSouth.setLayout(new FlowLayout(FlowLayout.LEFT)); // FlowLayout - altera a posição do Layout
+
+        panelSouth.setLayout(new FlowLayout(FlowLayout.LEFT)); // FlowLayout - Coloca os componentes lado a lado
         add(panelSouth, "South");
         panelSouth.setBackground(new ColorUIResource(187, 217, 194));
-        panelSouth.add(btnNovo);
-        panelSouth.add(btnAlterar);
-        panelSouth.add(btnExcluir);
+        panelSouth.add(btnNew);
+        panelSouth.add(btnUpdate);
+        panelSouth.add(btnDelete);
 
-        // Adição do ActionListener aos botões
-        btnNovo.addActionListener(controller);
-        btnNovo.setName("btnNovo");
-        btnNovo.setMnemonic('N');
-        btnNovo.setToolTipText("Criar um novo cliente");
-        btnAlterar.addActionListener(controller);
-        btnAlterar.setName("btnAlterar");
-        btnAlterar.setMnemonic('A');
-        btnAlterar.setToolTipText("Alterar um cliente");
-        btnExcluir.addActionListener(controller);
-        btnExcluir.setName("btnExcluir");
-        btnExcluir.setMnemonic('E');
-        btnExcluir.setToolTipText("Excluir um cliente");
+        // Configuração dos botões
+        btnNew.addActionListener(controller);
+        btnNew.setName("new");
+        btnNew.setMnemonic('N');
+        btnNew.setToolTipText("Criar um novo cliente (ALT + N)");
+        btnUpdate.addActionListener(controller);
+        btnUpdate.setName("update");
+        btnUpdate.setMnemonic('A');
+        btnUpdate.setToolTipText("Alterar um cliente (ALT + A)");
+        btnDelete.addActionListener(controller);
+        btnDelete.setName("delete");
+        btnDelete.setMnemonic('E');
+        btnDelete.setToolTipText("Excluir um cliente (ALT + E)");
 
-        // Barra de rolagem horizontal e vertical
+        // Barra de rolagem VERTICAL
         panelCenter = new JScrollPane(tabel);
         panelCenter.setBackground(Color.lightGray);
-        //panelCenter.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         panelCenter.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         
         add(panelCenter, "Center");
+        
+    }
+
+    public void updateTable() {
+
+        model.fireTableDataChanged();
+
+    }
+
+    public int rowNumber() {
+
+        return tabel.getSelectedRow();
+        
     }
 }

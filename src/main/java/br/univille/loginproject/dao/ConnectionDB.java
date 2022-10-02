@@ -39,17 +39,24 @@ public class ConnectionDB {
     private static ConnectionDB instance;
 
     private ConnectionDB() throws SQLException {
+
         this.conn = DriverManager.getConnection(connection, user, pass);
+
     }
 
     public static ConnectionDB getInstance() throws SQLException {
+
         if (instance == null)
             instance = new ConnectionDB();
         
         return instance;
+
     }
 
     public Connection getConn() {
+
         return this.conn;
+
     }
+    
 }

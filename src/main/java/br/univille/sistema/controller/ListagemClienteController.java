@@ -29,7 +29,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-//import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 
@@ -41,7 +40,6 @@ import br.univille.sistema.view.ListagemClientes;
 public class ListagemClienteController implements ActionListener{    
 
     private ClientService service = new ClientService();
-
     private ListagemClientes list;
     
     public ListagemClienteController(ListagemClientes list) {
@@ -50,9 +48,9 @@ public class ListagemClienteController implements ActionListener{
 
     }
 
-    public ArrayList<Cliente> getAllClientes() {
+    public ArrayList<Cliente> getAllClients() {
 
-        return service.getAllClientes();
+        return service.getAllClients();
 
     }
     
@@ -62,43 +60,45 @@ public class ListagemClienteController implements ActionListener{
         JComponent clickedButton = (JComponent)e.getSource();
 
         switch (clickedButton.getName()) {
-            case "btnNovo":
-                btnNovoClick();
+            case "new":
+                btnNewClick();
                 break;
 
-            case "btnAlterar":
-                btnAlterarClick();
+            case "update":
+                btnUpdateClick();
                 break;
             
-            case "btnExcluir":
-                btnExcluirClick();
+            case "delete":
+                btnDeleteClick();
                 break;
         }
 
     }
     
-    private void btnNovoClick() {
+    private void btnNewClick() {
 
-        Cliente novoCliente = new Cliente();
-        FormularioCliente form = new FormularioCliente(novoCliente);
+        Cliente newClient = new Cliente();
+        FormularioCliente form = new FormularioCliente(newClient);
 
-        if (novoCliente.getId() != -1) {
-            service.save(novoCliente);
+        if (newClient.getId() != -1) {
+            service.save(newClient);
         }
+
         form.getX();
 
         list.updateTable();
 
     }
 
-    private void btnAlterarClick() {
+    private void btnUpdateClick() {
 
         int index = list.rowNumber();
 
         if (index >= 0) {
-            Cliente cliente = this.getAllClientes().get(index);
-            FormularioCliente form = new FormularioCliente(cliente);
-            service.save(cliente);
+            Cliente client = this.getAllClients().get(index);
+            FormularioCliente form = new FormularioCliente(client);
+
+            service.save(client);
             list.updateTable();
             form.getX();
         } else {
@@ -107,15 +107,17 @@ public class ListagemClienteController implements ActionListener{
 
     }
 
-    private void btnExcluirClick() {     
+    private void btnDeleteClick() {     
 
         int index = list.rowNumber();
         
         if (index >= 0) {
-            Cliente cliente = this.getAllClientes().get(index);
+            Cliente client = this.getAllClients().get(index);
+
             int response = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir?", "Confirmação", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+
             if (response == JOptionPane.YES_OPTION) {
-                service.remove(cliente);
+                service.remove(client);
                 list.updateTable();
                 JOptionPane.showMessageDialog(null, "Cliente removido!", "Aviso!", JOptionPane.INFORMATION_MESSAGE);
             }

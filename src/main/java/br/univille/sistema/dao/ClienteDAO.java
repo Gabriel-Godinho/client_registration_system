@@ -39,7 +39,7 @@ import br.univille.sistema.entity.Cliente;
 
 public class ClienteDAO {
     
-    public ArrayList<Cliente> getAll() {
+    public final ArrayList<Cliente> getAll() {
 
         ArrayList<Cliente> list = new ArrayList<>();
         
@@ -66,7 +66,7 @@ public class ClienteDAO {
 
     }
 
-    public void save(Cliente client) {
+    public final void save(Cliente client) {
 
         try {
             Connection conn = ConexaoDB.getInstance().getConn();
@@ -95,7 +95,7 @@ public class ClienteDAO {
 
     }
     
-    public Cliente getClienteById(long id){
+    public final Cliente getClienteById(long id){
 
         Cliente client = new Cliente();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -126,7 +126,7 @@ public class ClienteDAO {
 
     }
 
-    public void delete(long id) {
+    public final void delete(long id) {
 
         try {
             Connection conn = ConexaoDB.getInstance().getConn();
