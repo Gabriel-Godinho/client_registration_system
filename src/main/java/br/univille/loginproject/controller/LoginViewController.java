@@ -72,6 +72,7 @@ public class LoginViewController implements ActionListener, KeyListener{
     private void registerClick() {
 
         RegisterView rview = new RegisterView();
+        System.out.println(rview.getX());
 
     }
 
@@ -83,6 +84,7 @@ public class LoginViewController implements ActionListener, KeyListener{
         if (ls.enter(username)) {
             lv.setVisible(false);
             ListagemClientes list = new ListagemClientes();
+            System.out.println(list.getX());
         } else {
             JOptionPane.showMessageDialog(null, "Usuário não registrado!", "Ops!", JOptionPane.ERROR_MESSAGE);
         }

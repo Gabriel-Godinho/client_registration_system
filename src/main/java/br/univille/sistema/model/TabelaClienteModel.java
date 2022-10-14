@@ -76,7 +76,6 @@ public class TabelaClienteModel extends AbstractTableModel{
             
             default:
                 return null;
-
         }
         
     }

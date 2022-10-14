@@ -54,9 +54,7 @@ public class FormularioCliente extends JDialog {
     private JTextField txtNome = new JTextField(20);
     private JTextField txtCpf = new JTextField(10);
     private JFormattedTextField txtBirth = new JFormattedTextField(12);
-    //private MaskFormatter maskCpf;
     private MaskFormatter maskBirth;
-
     private FormularioClienteController control = new FormularioClienteController(this);
     private Cliente cliente = new Cliente();   
     
@@ -67,7 +65,9 @@ public class FormularioCliente extends JDialog {
     }
 
     public void setCliente(Cliente cliente) {
+
         this.cliente = cliente;
+
     }
 
     public FormularioCliente(Cliente cliente) {
@@ -88,9 +88,11 @@ public class FormularioCliente extends JDialog {
         setLocationRelativeTo(null);
         createPanel();
         setVisible(true);
+
     }
 
     private void createPanel() {
+
         add(panelButton, "South");
         panelButton.add(ok);
         ok.setName("ok");
@@ -141,13 +143,13 @@ public class FormularioCliente extends JDialog {
         gbc.gridx = 1;
         gbc.gridy = 3;
         panelCenter.add(txtBirth, gbc);
+
     }
 
     public Cliente update(Cliente cliente) throws ValorInvalidoException{
         
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-
-        // Atualiza com os dados da tela (binding)              
+            
         cliente.setName(txtNome.getText());
         cliente.setCPF(txtCpf.getText());
         
@@ -158,6 +160,7 @@ public class FormularioCliente extends JDialog {
         }
 
         return cliente;
+
     }
 
 }
