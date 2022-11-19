@@ -44,6 +44,7 @@ public class ListagemClientes extends JFrame{
     private JButton btnNew = new JButton("Novo");
     private JButton btnUpdate = new JButton("Alterar");
     private JButton btnDelete = new JButton("Excluir");
+    private JButton btnExit = new JButton("Sair do sistema");
     private ListagemClienteController controller = new ListagemClienteController(this);
     private TabelaClienteModel model = new TabelaClienteModel(controller); // Instância do controlador;
     private JTable tabel = new JTable(model);
@@ -67,6 +68,7 @@ public class ListagemClientes extends JFrame{
         panelSouth.add(btnNew);
         panelSouth.add(btnUpdate);
         panelSouth.add(btnDelete);
+        panelSouth.add(btnExit);
 
         // Configuração dos botões
         btnNew.addActionListener(controller);
@@ -81,6 +83,9 @@ public class ListagemClientes extends JFrame{
         btnDelete.setName("delete");
         btnDelete.setMnemonic('E');
         btnDelete.setToolTipText("Excluir um cliente (ALT + E)");
+        btnExit.addActionListener(controller);
+        btnExit.setName("exit");
+        btnExit.setToolTipText("Sair do programa");
 
         // Barra de rolagem VERTICAL
         panelCenter = new JScrollPane(tabel);

@@ -32,6 +32,7 @@ import java.util.ArrayList;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 
+import br.univille.loginproject.view.LoginView;
 import br.univille.sistema.entity.Cliente;
 import br.univille.sistema.service.ClientService;
 import br.univille.sistema.view.FormularioCliente;
@@ -70,6 +71,9 @@ public class ListagemClienteController implements ActionListener{
             
             case "delete":
                 btnDeleteClick();
+                break;
+            case "exit":
+                btnExitClick();
                 break;
         }
 
@@ -125,6 +129,14 @@ public class ListagemClienteController implements ActionListener{
             JOptionPane.showMessageDialog(null, "Selecione um cliente para excluir!", "Aviso", JOptionPane.WARNING_MESSAGE);
         }
 
-    }  
+    }
+    
+    private void btnExitClick() {
+        int response = JOptionPane.showConfirmDialog(null, "Deseja sair?", "Confirmação", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+
+        if (response == JOptionPane.YES_OPTION)
+            list.dispose();
+
+    }
 
 }
