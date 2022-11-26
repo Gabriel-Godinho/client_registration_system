@@ -23,63 +23,36 @@
  * THE SOFTWARE.
  * =====LICENSE-END=====
  */
-package br.univille.sistema.entity;
+package br.univille.registrationsystem.exceptions;
 
-import java.util.Date;
+public class InvalidValueException extends Exception{
 
-public final class Cliente {
+    private String fieldName;
+
+    public InvalidValueException(String message, Exception origin) {
+
+        super(message, origin);
+        this.fieldName = null;
+
+    }
+
+    public InvalidValueException(String message, Exception origin, String fieldName) {
+
+        this(message, origin);
+        this.fieldName = fieldName;
+
+    }
+
+    public String getNomeCampo() {
+
+        return fieldName;
+
+    }
+
+    public void setNomeCampo(String fieldName) {
+
+        this.fieldName = fieldName;
+
+    }    
     
-    private long id;
-    private String name;
-    private String cpf;
-    private Date birthDate;
-
-    public Cliente() {
-
-    }
-
-    public Cliente(String name, String CPF) {
-        
-        if(!name.equals(null) || !CPF.equals(null)) {
-            this.name = name;
-            this.cpf = CPF;
-        }
-
-    }
-
-    // GET E SET - id
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    // GET E SET - name
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    // GET E SET - CPF
-    public String getCPF() {
-        return cpf;
-    }
-
-    public void setCPF(String CPF) {
-        cpf = CPF;
-    }
-
-    // GET E SET - birthDate
-    public Date getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
-    }   
 }

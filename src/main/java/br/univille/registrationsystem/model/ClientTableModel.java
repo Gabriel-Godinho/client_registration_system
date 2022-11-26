@@ -23,20 +23,20 @@
  * THE SOFTWARE.
  * =====LICENSE-END=====
  */
-package br.univille.sistema.model;
+package br.univille.registrationsystem.model;
 
 import java.text.SimpleDateFormat;
 
 import javax.swing.table.AbstractTableModel;
 
-import br.univille.sistema.controller.ListagemClienteController;
+import br.univille.registrationsystem.controller.ClientListController;
 
-public class TabelaClienteModel extends AbstractTableModel{
+public class ClientTableModel extends AbstractTableModel{
 
     private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-    private ListagemClienteController controller;
+    private ClientListController controller;
 
-    public TabelaClienteModel(ListagemClienteController controller) {
+    public ClientTableModel(ClientListController controller) {
 
         this.controller = controller;
 

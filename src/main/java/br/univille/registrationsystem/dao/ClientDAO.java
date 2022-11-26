@@ -23,7 +23,7 @@
  * THE SOFTWARE.
  * =====LICENSE-END=====
  */
-package br.univille.sistema.dao;
+package br.univille.registrationsystem.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -35,22 +35,22 @@ import java.text.SimpleDateFormat;
 
 import java.util.ArrayList;
 
-import br.univille.sistema.entity.Cliente;
+import br.univille.registrationsystem.entity.Client;
 
-public class ClienteDAO {
+public class ClientDAO {
     
-    public final ArrayList<Cliente> getAll() {
+    public final ArrayList<Client> getAll() {
 
-        ArrayList<Cliente> list = new ArrayList<>();
+        ArrayList<Client> list = new ArrayList<>();
         
         try {
-            Connection conn = ConexaoDB.getInstance().getConn();
+            Connection conn = ConnectionDB.getInstance().getConn();
             String sql = "SELECT * FROM clients";
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()){
-                Cliente newClient = new Cliente();
+                Client newClient = new Client();
                 newClient.setId(rs.getLong("id"));
                 newClient.setName(rs.getString("full_name"));
                 newClient.setCPF(rs.getString("cpf"));
@@ -66,10 +66,10 @@ public class ClienteDAO {
 
     }
 
-    public final void save(Cliente client) {
+    public final void save(Client client) {
 
         try {
-            Connection conn = ConexaoDB.getInstance().getConn();
+            Connection conn = ConnectionDB.getInstance().getConn();
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
             if (client.getId() == 0 || client.getId() == -1) {
@@ -95,13 +95,13 @@ public class ClienteDAO {
 
     }
     
-    public final Cliente getClienteById(long id){
+    public final Client getClienteById(long id){
 
-        Cliente client = new Cliente();
+        Client client = new Client();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
  
         try {
-            Connection conn = ConexaoDB.getInstance().getConn();
+            Connection conn = ConnectionDB.getInstance().getConn();
             String sql = "SELECT * FROM clients WHERE id = ?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setLong(1, id);
@@ -129,7 +129,7 @@ public class ClienteDAO {
     public final void delete(long id) {
 
         try {
-            Connection conn = ConexaoDB.getInstance().getConn();
+            Connection conn = ConnectionDB.getInstance().getConn();
             String delete = "DELETE FROM clients WHERE id = ?";
             PreparedStatement ps = conn.prepareStatement(delete);
             ps.setLong(1, id);

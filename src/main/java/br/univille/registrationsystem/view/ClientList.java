@@ -23,7 +23,7 @@
  * THE SOFTWARE.
  * =====LICENSE-END=====
  */
-package br.univille.sistema.view;
+package br.univille.registrationsystem.view;
 
 import java.awt.Color;
 import java.awt.FlowLayout;
@@ -34,10 +34,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.plaf.ColorUIResource;
 
-import br.univille.sistema.controller.ListagemClienteController;
-import br.univille.sistema.model.TabelaClienteModel;
+import br.univille.registrationsystem.controller.ClientListController;
+import br.univille.registrationsystem.model.ClientTableModel;
 
-public class ListagemClientes extends JFrame{
+public class ClientList extends JFrame{
 
     private JScrollPane panelCenter;
     private JPanel panelSouth = new JPanel();
@@ -45,11 +45,11 @@ public class ListagemClientes extends JFrame{
     private JButton btnUpdate = new JButton("Alterar");
     private JButton btnDelete = new JButton("Excluir");
     private JButton btnExit = new JButton("Sair do sistema");
-    private ListagemClienteController controller = new ListagemClienteController(this);
-    private TabelaClienteModel model = new TabelaClienteModel(controller); // Instância do controlador;
+    private ClientListController controller = new ClientListController(this);
+    private ClientTableModel model = new ClientTableModel(controller); // Instância do controlador;
     private JTable tabel = new JTable(model);
     
-    public ListagemClientes() {
+    public ClientList() {
 
         setSize(900, 700);
         setTitle("Listagem de Clientes");
