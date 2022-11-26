@@ -23,24 +23,24 @@
  * THE SOFTWARE.
  * =====LICENSE-END=====
  */
-package br.univille.sistema.service;
+package br.univille.registrationsystem.service;
 
 import java.util.ArrayList;
 
-import br.univille.sistema.dao.ClienteDAO;
-import br.univille.sistema.entity.Cliente;
+import br.univille.registrationsystem.dao.ClientDAO;
+import br.univille.registrationsystem.entity.Client;
 
 public final class ClientService {
     
-    private ClienteDAO daoClient = new ClienteDAO();
+    private ClientDAO daoClient = new ClientDAO();
 
-    public ArrayList<Cliente> getAllClients() {
+    public ArrayList<Client> getAllClients() {
 
         return daoClient.getAll();
 
     }
 
-    public Cliente save(Cliente client) {
+    public Client save(Client client) {
 
         daoClient.save(client);
 
@@ -48,7 +48,7 @@ public final class ClientService {
         
     }
 
-    public void remove(Cliente client) {
+    public void remove(Client client) {
 
         daoClient.delete(client.getId());
         

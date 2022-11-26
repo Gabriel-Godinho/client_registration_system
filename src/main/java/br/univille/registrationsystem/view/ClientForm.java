@@ -23,7 +23,7 @@
  * THE SOFTWARE.
  * =====LICENSE-END=====
  */
-package br.univille.sistema.view;
+package br.univille.registrationsystem.view;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -36,16 +36,16 @@ import javax.swing.plaf.ColorUIResource;
 import javax.swing.plaf.InsetsUIResource;
 import javax.swing.text.MaskFormatter;
 
-import br.univille.sistema.controller.FormularioClienteController;
-import br.univille.sistema.entity.Cliente;
-import br.univille.sistema.exceptions.ValorInvalidoException;
+import br.univille.registrationsystem.controller.ClientFormController;
+import br.univille.registrationsystem.entity.Client;
+import br.univille.registrationsystem.exceptions.InvalidValueException;
 
 import java.awt.GridBagLayout;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.awt.GridBagConstraints;
 
-public class FormularioCliente extends JDialog {
+public class ClientForm extends JDialog {
     
     private JPanel panelCenter = new JPanel();
     private JPanel panelButton = new JPanel();
@@ -55,22 +55,22 @@ public class FormularioCliente extends JDialog {
     private JTextField txtCpf = new JTextField(10);
     private JFormattedTextField txtBirth = new JFormattedTextField(12);
     private MaskFormatter maskBirth;
-    private FormularioClienteController control = new FormularioClienteController(this);
-    private Cliente cliente = new Cliente();   
+    private ClientFormController control = new ClientFormController(this);
+    private Client cliente = new Client();
     
-    public Cliente getCliente() {
+    public Client getCliente() {
 
         return cliente;
 
     }
 
-    public void setCliente(Cliente cliente) {
+    public void setCliente(Client cliente) {
 
         this.cliente = cliente;
 
     }
 
-    public FormularioCliente(Cliente cliente) {
+    public ClientForm(Client cliente) {
         
         this.cliente = cliente;
         txtNome.setText(cliente.getName());
@@ -146,7 +146,7 @@ public class FormularioCliente extends JDialog {
 
     }
 
-    public Cliente update(Cliente cliente) throws ValorInvalidoException{
+    public Client update(Client cliente) throws InvalidValueException {
         
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
             
@@ -156,7 +156,7 @@ public class FormularioCliente extends JDialog {
         try {
             cliente.setBirthDate(sdf.parse(txtBirth.getText()));
         } catch (ParseException e) {
-            throw new ValorInvalidoException("Data inválida!", e, "DATA DE NASCIMENTO");
+            throw new InvalidValueException("Data inválida!", e, "DATA DE NASCIMENTO");
         }
 
         return cliente;

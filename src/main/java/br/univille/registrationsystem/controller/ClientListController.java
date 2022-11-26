@@ -23,7 +23,7 @@
  * THE SOFTWARE.
  * =====LICENSE-END=====
  */
-package br.univille.sistema.controller;
+package br.univille.registrationsystem.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -32,23 +32,23 @@ import java.util.ArrayList;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 
-import br.univille.sistema.entity.Cliente;
-import br.univille.sistema.service.ClientService;
-import br.univille.sistema.view.FormularioCliente;
-import br.univille.sistema.view.ListagemClientes;
+import br.univille.registrationsystem.entity.Client;
+import br.univille.registrationsystem.service.ClientService;
+import br.univille.registrationsystem.view.ClientForm;
+import br.univille.registrationsystem.view.ClientList;
 
-public class ListagemClienteController implements ActionListener{    
+public class ClientListController implements ActionListener{
 
     private ClientService service = new ClientService();
-    private ListagemClientes list;
+    private ClientList list;
     
-    public ListagemClienteController(ListagemClientes list) {
+    public ClientListController(ClientList list) {
 
         this.list = list;
 
     }
 
-    public ArrayList<Cliente> getAllClients() {
+    public ArrayList<Client> getAllClients() {
 
         return service.getAllClients();
 
@@ -80,8 +80,8 @@ public class ListagemClienteController implements ActionListener{
     
     private void btnNewClick() {
 
-        Cliente newClient = new Cliente();
-        FormularioCliente form = new FormularioCliente(newClient);
+        Client newClient = new Client();
+        ClientForm form = new ClientForm(newClient);
 
         if (newClient.getId() != -1) {
             service.save(newClient);
@@ -98,8 +98,8 @@ public class ListagemClienteController implements ActionListener{
         int index = list.rowNumber();
 
         if (index >= 0) {
-            Cliente client = this.getAllClients().get(index);
-            FormularioCliente form = new FormularioCliente(client);
+            Client client = this.getAllClients().get(index);
+            ClientForm form = new ClientForm(client);
 
             service.save(client);
             list.updateTable();
@@ -115,7 +115,7 @@ public class ListagemClienteController implements ActionListener{
         int index = list.rowNumber();
         
         if (index >= 0) {
-            Cliente client = this.getAllClients().get(index);
+            Client client = this.getAllClients().get(index);
 
             int response = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir?", "Confirmação", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
 
@@ -134,7 +134,7 @@ public class ListagemClienteController implements ActionListener{
         int response = JOptionPane.showConfirmDialog(null, "Deseja sair?", "Confirmação", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
 
         if (response == JOptionPane.YES_OPTION)
-            System.exit(0);
+            list.dispose();
 
     }
 

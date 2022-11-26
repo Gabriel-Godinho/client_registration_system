@@ -23,32 +23,63 @@
  * THE SOFTWARE.
  * =====LICENSE-END=====
  */
-package br.univille.sistema.dao;
+package br.univille.registrationsystem.entity;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.util.Date;
 
-public class ConexaoDB {
-
-    private Connection conn;
-    private String stringConexao = "jdbc:mariadb://localhost/loginsistem";
-    private String user = "root";
-    private String pass = "univille";
-    private static ConexaoDB instance;
+public final class Client {
     
-    private ConexaoDB() throws SQLException{
-        this.conn = DriverManager.getConnection(stringConexao, user, pass);
+    private long id;
+    private String name;
+    private String cpf;
+    private Date birthDate;
+
+    public Client() {
+
     }
 
-    public static ConexaoDB getInstance() throws SQLException{
-        if(instance == null)
-            instance = new ConexaoDB();
+    public Client(String name, String CPF) {
         
-        return instance;
+        if(!name.equals(null) || !CPF.equals(null)) {
+            this.name = name;
+            this.cpf = CPF;
+        }
+
     }
 
-    public Connection getConn() {
-        return this.conn;
+    // GET E SET - id
+    public long getId() {
+        return id;
     }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    // GET E SET - name
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    // GET E SET - CPF
+    public String getCPF() {
+        return cpf;
+    }
+
+    public void setCPF(String CPF) {
+        cpf = CPF;
+    }
+
+    // GET E SET - birthDate
+    public Date getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
+    }   
 }

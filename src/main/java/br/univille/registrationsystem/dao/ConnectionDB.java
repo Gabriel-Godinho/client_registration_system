@@ -23,36 +23,32 @@
  * THE SOFTWARE.
  * =====LICENSE-END=====
  */
-package br.univille.sistema.exceptions;
+package br.univille.registrationsystem.dao;
 
-public class ValorInvalidoException extends Exception{
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
-    private String fieldName;
+public class ConnectionDB {
 
-    public ValorInvalidoException(String message, Exception origin) {
-
-        super(message, origin);
-        this.fieldName = null;
-
-    }
-
-    public ValorInvalidoException(String message, Exception origin, String fieldName) {
-
-        this(message, origin);
-        this.fieldName = fieldName;
-
-    }
-
-    public String getNomeCampo() {
-
-        return fieldName;
-
-    }
-
-    public void setNomeCampo(String fieldName) {
-
-        this.fieldName = fieldName;
-
-    }    
+    private Connection conn;
+    private String stringConexao = "jdbc:mariadb://localhost/loginsistem";
+    private String user = "root";
+    private String pass = "univille";
+    private static ConnectionDB instance;
     
+    private ConnectionDB() throws SQLException{
+        this.conn = DriverManager.getConnection(stringConexao, user, pass);
+    }
+
+    public static ConnectionDB getInstance() throws SQLException{
+        if(instance == null)
+            instance = new ConnectionDB();
+        
+        return instance;
+    }
+
+    public Connection getConn() {
+        return this.conn;
+    }
 }

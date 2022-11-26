@@ -23,7 +23,7 @@
  * THE SOFTWARE.
  * =====LICENSE-END=====
  */
-package br.univille.sistema.controller;
+package br.univille.registrationsystem.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -33,17 +33,17 @@ import java.awt.event.KeyListener;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 
-import br.univille.sistema.entity.Cliente;
-import br.univille.sistema.exceptions.ValorInvalidoException;
-import br.univille.sistema.service.ClientService;
-import br.univille.sistema.view.FormularioCliente;
+import br.univille.registrationsystem.entity.Client;
+import br.univille.registrationsystem.exceptions.InvalidValueException;
+import br.univille.registrationsystem.service.ClientService;
+import br.univille.registrationsystem.view.ClientForm;
 
-public class FormularioClienteController implements ActionListener, KeyListener{
+public class ClientFormController implements ActionListener, KeyListener{
 
-    private FormularioCliente formcli;
+    private ClientForm formcli;
     private ClientService service = new ClientService();
     
-    public FormularioClienteController(FormularioCliente formcli) {
+    public ClientFormController(ClientForm formcli) {
 
         this.formcli = formcli;
 
@@ -77,7 +77,7 @@ public class FormularioClienteController implements ActionListener, KeyListener{
                 service.save(client);
 
             formcli.dispose();
-        } catch (ValorInvalidoException e) {
+        } catch (InvalidValueException e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
         }
 
@@ -89,13 +89,13 @@ public class FormularioClienteController implements ActionListener, KeyListener{
 
     }
 
-    private void validation(Cliente client) throws ValorInvalidoException{
+    private void validation(Client client) throws InvalidValueException {
         
         if (client.getName().equals(null) || client.getName().isEmpty()) {
-            throw new ValorInvalidoException("O nome não pode ser deixado em branco!", null, "NOME");
+            throw new InvalidValueException("O nome não pode ser deixado em branco!", null, "NOME");
         }
         if (client.getCPF().equals(null) || client.getCPF().isEmpty()) {
-            throw new ValorInvalidoException("O CPF não pode ser deixado em branco!", null, "CPF");
+            throw new InvalidValueException("O CPF não pode ser deixado em branco!", null, "CPF");
         }
 
     }
