@@ -46,15 +46,15 @@ import java.awt.GridBagConstraints;
 
 public class LoginView extends JFrame{
 
-    private JPanel south = new JPanel();
-    private JPanel center = new JPanel();
-    private JLabel userLabel = new JLabel("Usuário");
-    private JLabel passLabel = new JLabel("Senha");
-    private JTextField userField = new JTextField(20);
-    private JPasswordField passwordField = new JPasswordField(20);
-    private JButton registerButton = new JButton("Registrar-se");
-    private JButton enterButton = new JButton("Entrar");
-    private LoginViewController control = new LoginViewController(this);
+    private final JPanel south = new JPanel();
+    private final JPanel center = new JPanel();
+    private final JLabel userLabel = new JLabel("Usuário");
+    private final JLabel passLabel = new JLabel("Senha");
+    private final JTextField userField = new JTextField(20);
+    private final JPasswordField passwordField = new JPasswordField(20);
+    private final JButton registerButton = new JButton("Registrar-se");
+    private final JButton enterButton = new JButton("Entrar");
+    private final LoginViewController control = new LoginViewController(this);
     
     public LoginView() {
 
@@ -110,14 +110,7 @@ public class LoginView extends JFrame{
         center.add(passwordField, cons);
 
     }
-    
-    /**
-     * Método responsável por guardar os dados digitados nos campos de texto
-     * dentro de uma nova instância da classe Login.
-     * O método retornará o objeto criado a partir da instância da classe Login com os dados 
-     * vindos dos campos de texto.
-     * @return
-     */
+
     public Login getLogin() {
 
         Login log = new Login();

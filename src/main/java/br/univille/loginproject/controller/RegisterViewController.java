@@ -39,8 +39,8 @@ import br.univille.loginproject.view.RegisterView;
 
 public class RegisterViewController implements ActionListener, KeyListener{
 
-    private RegisterView rv;
-    private LoginService service = new LoginService();
+    private final RegisterView rv;
+    private final LoginService service = new LoginService();
 
     public RegisterViewController(RegisterView rv) {
 
@@ -76,7 +76,7 @@ public class RegisterViewController implements ActionListener, KeyListener{
                 JOptionPane.showMessageDialog(null, "Usuário já existente!", "Ops!", JOptionPane.ERROR_MESSAGE);
             } else if (login.getUser().equals("") || login.getPassword().equals("")) {
                 JOptionPane.showMessageDialog(null, "Preencha os campos corretamente!", "Ops!", JOptionPane.INFORMATION_MESSAGE);
-            } else if (!login.equals(null)) {
+            } else if (login != null) {
                 service.register(login);
                 JOptionPane.showMessageDialog(null, "Usuário registrado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
                 rv.dispose();

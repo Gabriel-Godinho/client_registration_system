@@ -32,14 +32,14 @@ import java.sql.SQLException;
 public class ConnectionDB {
     
     // SINGLETON
-    private Connection conn;
-    private String connection = "jdbc:mariadb://localhost/loginsistem";
-    private String user = "root";
-    private String pass = "univille";
+    private final Connection conn;
     private static ConnectionDB instance;
 
     private ConnectionDB() throws SQLException {
-
+        // Nenhum dado importante dentro deste banco de dados
+        final String connection = "jdbc:mariadb://localhost/loginsistem";
+        final String user = "root";
+        final String pass = "univille";
         this.conn = DriverManager.getConnection(connection, user, pass);
 
     }

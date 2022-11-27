@@ -41,8 +41,8 @@ import br.univille.registrationsystem.view.ClientList;
 
 public class LoginViewController implements ActionListener, KeyListener{
 
-    private LoginService ls = new LoginService();
-    private LoginView lv;
+    private final LoginService ls = new LoginService();
+    private final LoginView lv;
 
     public LoginViewController(LoginView lv) {
 

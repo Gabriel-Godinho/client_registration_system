@@ -30,7 +30,7 @@ import br.univille.loginproject.entitys.Login;
 
 public class LoginService {
     
-    private LoginDAO dao = new LoginDAO();
+    private final LoginDAO dao = new LoginDAO();
 
     public boolean enter(Login login) {
 

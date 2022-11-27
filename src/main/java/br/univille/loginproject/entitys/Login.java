@@ -29,15 +29,19 @@ public final class Login {
     
     private String user;
     private String password;
-    
+
+    public Login() {
+        this.user = "";
+        this.password = "";
+    }
+
     // GET E SET - USUÁRIO
     public String getUser() {
         return user;
     }
     public void setUser(String user) {
 
-        if (!user.equals(null) || !user.equals(""))
-            this.user = user;
+        this.user = user;
 
     }
     
@@ -46,9 +50,8 @@ public final class Login {
         return password;
     }
     public void setPassword(String password) {
-        
-        if(!password.equals(null) || !password.equals(""))
-            this.password = password;
+
+        this.password = password;
 
     }
 
