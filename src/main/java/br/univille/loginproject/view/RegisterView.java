@@ -45,17 +45,17 @@ import java.awt.GridBagConstraints;
 
 public class RegisterView extends JDialog{
 
-    private JPanel south = new JPanel();
-    private JPanel center = new JPanel();
-    private JButton confirmButton = new JButton("Registrar");
-    private JButton cancelButton = new JButton("Cancelar");
-    private JLabel userLabel = new JLabel("Nome de usuário");
-    private JLabel passLabel = new JLabel("Senha");
-    private JLabel confirmpassLabel = new JLabel("Confirme a senha");
-    private JTextField usertTextField = new JTextField(15);
-    private JPasswordField pField = new JPasswordField(15);
-    private JPasswordField confirmpField = new JPasswordField(15);
-    private RegisterViewController control = new RegisterViewController(this);
+    private final JPanel south = new JPanel();
+    private final JPanel center = new JPanel();
+    private final JButton confirmButton = new JButton("Registrar");
+    private final JButton cancelButton = new JButton("Cancelar");
+    private final JLabel userLabel = new JLabel("Nome de usuário");
+    private final JLabel passLabel = new JLabel("Senha");
+    private final JLabel confirmpassLabel = new JLabel("Confirme a senha");
+    private final JTextField usertTextField = new JTextField(15);
+    private final JPasswordField pField = new JPasswordField(15);
+    private final JPasswordField confirmpField = new JPasswordField(15);
+    private final RegisterViewController control = new RegisterViewController(this);
 
     public RegisterView() {
 
@@ -114,16 +114,7 @@ public class RegisterView extends JDialog{
         center.add(confirmpField, cons);
 
     }
-    
-    /**
-     * Método responsável por guardar os dados inseridos nos campos de texto 
-     * dentro de uma nova instância da classe Login.
-     * Se a senha inserida no campo Senha for igual à senha inserida no campo Confirmar Senha,
-     * o método retornará o objeto criado a partir da instância da classe Login com os valores 
-     * inseridos pelo usuário nos campos de texto.
-     * Caso contrário, o método retornará null. 
-     * @return
-     */
+
     public Login getLogin() {
 
         Login log = new Login();
