@@ -33,8 +33,8 @@ import br.univille.registrationsystem.controller.ClientListController;
 
 public class ClientTableModel extends AbstractTableModel{
 
-    private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-    private ClientListController controller;
+    private final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    private final ClientListController controller;
 
     public ClientTableModel(ClientListController controller) {
 

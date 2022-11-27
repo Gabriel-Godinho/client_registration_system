@@ -47,26 +47,19 @@ import java.awt.GridBagConstraints;
 
 public class ClientForm extends JDialog {
     
-    private JPanel panelCenter = new JPanel();
-    private JPanel panelButton = new JPanel();
-    private JButton ok = new JButton("OK");
-    private JButton cancelar = new JButton("Cancelar");
-    private JTextField txtNome = new JTextField(20);
-    private JTextField txtCpf = new JTextField(10);
+    private final JPanel panelCenter = new JPanel();
+    private final JPanel panelButton = new JPanel();
+    private final JButton ok = new JButton("OK");
+    private final JButton cancelar = new JButton("Cancelar");
+    private final JTextField txtNome = new JTextField(20);
+    private final JTextField txtCpf = new JTextField(10);
     private JFormattedTextField txtBirth = new JFormattedTextField(12);
-    private MaskFormatter maskBirth;
-    private ClientFormController control = new ClientFormController(this);
+    private final ClientFormController control = new ClientFormController(this);
     private Client cliente = new Client();
     
     public Client getCliente() {
 
         return cliente;
-
-    }
-
-    public void setCliente(Client cliente) {
-
-        this.cliente = cliente;
 
     }
 
@@ -77,8 +70,7 @@ public class ClientForm extends JDialog {
         txtCpf.setText(cliente.getCPF());
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        if (cliente.getBirthDate() == null){
-        } else {
+        if (cliente.getBirthDate() != null){
             txtBirth.setText(sdf.format(cliente.getBirthDate()));
         }
         
@@ -134,7 +126,7 @@ public class ClientForm extends JDialog {
         panelCenter.add(new JLabel("Data de nascimento:"), gbc);
 
         try {
-            maskBirth = new MaskFormatter("##/##/####");
+            MaskFormatter maskBirth = new MaskFormatter("##/##/####");
             txtBirth = new JFormattedTextField(maskBirth);
         } catch (ParseException e) {
             e.printStackTrace();
@@ -156,7 +148,7 @@ public class ClientForm extends JDialog {
         try {
             cliente.setBirthDate(sdf.parse(txtBirth.getText()));
         } catch (ParseException e) {
-            throw new InvalidValueException("Data inválida!", e, "DATA DE NASCIMENTO");
+            throw new InvalidValueException("Data inválida!", e);
         }
 
         return cliente;

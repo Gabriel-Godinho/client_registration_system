@@ -39,15 +39,14 @@ import br.univille.registrationsystem.model.ClientTableModel;
 
 public class ClientList extends JFrame{
 
-    private JScrollPane panelCenter;
-    private JPanel panelSouth = new JPanel();
-    private JButton btnNew = new JButton("Novo");
-    private JButton btnUpdate = new JButton("Alterar");
-    private JButton btnDelete = new JButton("Excluir");
-    private JButton btnExit = new JButton("Sair do sistema");
-    private ClientListController controller = new ClientListController(this);
-    private ClientTableModel model = new ClientTableModel(controller); // Instância do controlador;
-    private JTable tabel = new JTable(model);
+    private final JPanel panelSouth = new JPanel();
+    private final JButton btnNew = new JButton("Novo");
+    private final JButton btnUpdate = new JButton("Alterar");
+    private final JButton btnDelete = new JButton("Excluir");
+    private final JButton btnExit = new JButton("Sair do sistema");
+    private final ClientListController controller = new ClientListController(this);
+    private final ClientTableModel model = new ClientTableModel(controller); // Instância do controlador;
+    private final JTable tabel = new JTable(model);
     
     public ClientList() {
 
@@ -88,7 +87,7 @@ public class ClientList extends JFrame{
         btnExit.setToolTipText("Sair do programa");
 
         // Barra de rolagem VERTICAL
-        panelCenter = new JScrollPane(tabel);
+        JScrollPane panelCenter = new JScrollPane(tabel);
         panelCenter.setBackground(Color.lightGray);
         panelCenter.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         

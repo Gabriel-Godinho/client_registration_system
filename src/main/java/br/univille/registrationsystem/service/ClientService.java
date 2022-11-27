@@ -32,7 +32,7 @@ import br.univille.registrationsystem.entity.Client;
 
 public final class ClientService {
     
-    private ClientDAO daoClient = new ClientDAO();
+    private final ClientDAO daoClient = new ClientDAO();
 
     public ArrayList<Client> getAllClients() {
 
@@ -40,12 +40,10 @@ public final class ClientService {
 
     }
 
-    public Client save(Client client) {
+    public void save(Client client) {
 
         daoClient.save(client);
 
-        return client;
-        
     }
 
     public void remove(Client client) {

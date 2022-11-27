@@ -39,8 +39,8 @@ import br.univille.registrationsystem.view.ClientList;
 
 public class ClientListController implements ActionListener{
 
-    private ClientService service = new ClientService();
-    private ClientList list;
+    private final ClientService service = new ClientService();
+    private final ClientList list;
     
     public ClientListController(ClientList list) {
 
@@ -71,6 +71,7 @@ public class ClientListController implements ActionListener{
             case "delete":
                 btnDeleteClick();
                 break;
+
             case "exit":
                 btnExitClick();
                 break;
@@ -87,7 +88,7 @@ public class ClientListController implements ActionListener{
             service.save(newClient);
         }
 
-        form.getX();
+        System.out.println(form.getX());
 
         list.updateTable();
 
@@ -103,7 +104,7 @@ public class ClientListController implements ActionListener{
 
             service.save(client);
             list.updateTable();
-            form.getX();
+            System.out.println(form.getX());
         } else {
             JOptionPane.showMessageDialog(null, "Selecione um cliente para alterar!", "Aviso", JOptionPane.WARNING_MESSAGE);
         }

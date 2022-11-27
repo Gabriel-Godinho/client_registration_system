@@ -35,16 +35,10 @@ public final class Client {
     private Date birthDate;
 
     public Client() {
-
-    }
-
-    public Client(String name, String CPF) {
-        
-        if(!name.equals(null) || !CPF.equals(null)) {
-            this.name = name;
-            this.cpf = CPF;
-        }
-
+        this.id = 0L;
+        this.name = "";
+        this.cpf = "";
+        this.birthDate = new Date();
     }
 
     // GET E SET - id

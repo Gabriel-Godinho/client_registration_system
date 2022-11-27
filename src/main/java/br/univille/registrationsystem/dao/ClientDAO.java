@@ -30,7 +30,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import java.util.ArrayList;
@@ -92,37 +91,6 @@ public class ClientDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-    }
-    
-    public final Client getClienteById(long id){
-
-        Client client = new Client();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
- 
-        try {
-            Connection conn = ConnectionDB.getInstance().getConn();
-            String sql = "SELECT * FROM clients WHERE id = ?";
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setLong(1, id);
-
-            ResultSet rs = ps.executeQuery();
-
-            if (rs.next()) {
-                // Hidratação do objeto
-                client.setId(rs.getLong("id"));
-                client.setName(rs.getString("full_name"));
-                client.setCPF(rs.getString("cpf"));
-                client.setBirthDate(sdf.parse(rs.getString("birthdate")));
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        return null;
 
     }
 

@@ -27,32 +27,10 @@ package br.univille.registrationsystem.exceptions;
 
 public class InvalidValueException extends Exception{
 
-    private String fieldName;
-
     public InvalidValueException(String message, Exception origin) {
 
         super(message, origin);
-        this.fieldName = null;
 
     }
 
-    public InvalidValueException(String message, Exception origin, String fieldName) {
-
-        this(message, origin);
-        this.fieldName = fieldName;
-
-    }
-
-    public String getNomeCampo() {
-
-        return fieldName;
-
-    }
-
-    public void setNomeCampo(String fieldName) {
-
-        this.fieldName = fieldName;
-
-    }    
-    
 }

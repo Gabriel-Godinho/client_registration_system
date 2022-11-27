@@ -40,12 +40,12 @@ import br.univille.registrationsystem.view.ClientForm;
 
 public class ClientFormController implements ActionListener, KeyListener{
 
-    private ClientForm formcli;
-    private ClientService service = new ClientService();
+    private final ClientForm clientForm;
+    private final ClientService service = new ClientService();
     
     public ClientFormController(ClientForm formcli) {
 
-        this.formcli = formcli;
+        this.clientForm = formcli;
 
     }
 
@@ -69,14 +69,13 @@ public class ClientFormController implements ActionListener, KeyListener{
     private void okClick() {
         
         try {
-            var client = formcli.getCliente();
-            formcli.update(client);
-            validation(client);
+            var client = clientForm.getCliente();
+            validation(clientForm.update(client));
             
             if (client.getId() < 0)
                 service.save(client);
 
-            formcli.dispose();
+            clientForm.dispose();
         } catch (InvalidValueException e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
         }
@@ -85,17 +84,17 @@ public class ClientFormController implements ActionListener, KeyListener{
 
     private void cancelClick() {
 
-        formcli.dispose();
+        clientForm.dispose();
 
     }
 
     private void validation(Client client) throws InvalidValueException {
         
-        if (client.getName().equals(null) || client.getName().isEmpty()) {
-            throw new InvalidValueException("O nome não pode ser deixado em branco!", null, "NOME");
+        if (client.getName() == null || client.getName().isEmpty()) {
+            throw new InvalidValueException("O nome não pode ser deixado em branco!", null);
         }
-        if (client.getCPF().equals(null) || client.getCPF().isEmpty()) {
-            throw new InvalidValueException("O CPF não pode ser deixado em branco!", null, "CPF");
+        if (client.getCPF() == null || client.getCPF().isEmpty()) {
+            throw new InvalidValueException("O CPF não pode ser deixado em branco!", null);
         }
 
     }
