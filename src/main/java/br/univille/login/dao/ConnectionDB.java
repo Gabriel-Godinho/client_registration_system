@@ -23,7 +23,7 @@
  * THE SOFTWARE.
  * =====LICENSE-END=====
  */
-package br.univille.loginproject.dao;
+package br.univille.login.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

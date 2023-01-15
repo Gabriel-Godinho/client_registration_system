@@ -23,7 +23,7 @@
  * THE SOFTWARE.
  * =====LICENSE-END=====
  */
-package br.univille.loginproject.controller;
+package br.univille.login.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -33,10 +33,10 @@ import java.awt.event.KeyListener;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 
-import br.univille.loginproject.entitys.Login;
-import br.univille.loginproject.service.LoginService;
-import br.univille.loginproject.view.LoginView;
-import br.univille.loginproject.view.RegisterView;
+import br.univille.login.entitys.Login;
+import br.univille.login.service.LoginService;
+import br.univille.login.view.LoginView;
+import br.univille.login.view.RegisterView;
 import br.univille.registrationsystem.view.ClientList;
 
 public class LoginViewController implements ActionListener, KeyListener{

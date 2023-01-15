@@ -23,10 +23,10 @@
  * THE SOFTWARE.
  * =====LICENSE-END=====
  */
-package br.univille.loginproject.service;
+package br.univille.login.service;
 
-import br.univille.loginproject.dao.LoginDAO;
-import br.univille.loginproject.entitys.Login;
+import br.univille.login.dao.LoginDAO;
+import br.univille.login.entitys.Login;
 
 public class LoginService {
     

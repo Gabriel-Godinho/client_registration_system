@@ -23,14 +23,14 @@
  * THE SOFTWARE.
  * =====LICENSE-END=====
  */
-package br.univille.loginproject.dao;
+package br.univille.login.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import br.univille.loginproject.entitys.Login;
+import br.univille.login.entitys.Login;
 
 public class LoginDAO {
     

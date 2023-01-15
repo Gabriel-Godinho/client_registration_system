@@ -23,65 +23,67 @@
  * THE SOFTWARE.
  * =====LICENSE-END=====
  */
-package br.univille.loginproject.view;
+package br.univille.login.view;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+
 import javax.swing.plaf.ColorUIResource;
 import javax.swing.plaf.InsetsUIResource;
 
-import br.univille.loginproject.controller.RegisterViewController;
-import br.univille.loginproject.entitys.Login;
+import br.univille.login.controller.LoginViewController;
+import br.univille.login.entitys.Login;
 
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 
-/* Construção da tela de registro de novo usuário*/
-public class RegisterView extends JDialog{
+/* Construção da tela principal de login*/
+public class LoginView extends JFrame{
 
     private final JPanel south = new JPanel();
     private final JPanel center = new JPanel();
-    private final JButton confirmButton = new JButton("Registrar");
-    private final JButton cancelButton = new JButton("Cancelar");
-    private final JLabel userLabel = new JLabel("Nome de usuário");
+    private final JLabel userLabel = new JLabel("Usuário");
     private final JLabel passLabel = new JLabel("Senha");
-    private final JLabel confirmpassLabel = new JLabel("Confirme a senha");
-    private final JTextField usertTextField = new JTextField(15);
-    private final JPasswordField pField = new JPasswordField(15);
-    private final JPasswordField confirmpField = new JPasswordField(15);
-    private final RegisterViewController control = new RegisterViewController(this);
-
-    public RegisterView() {
+    private final JTextField userField = new JTextField(20);
+    private final JPasswordField passwordField = new JPasswordField(20);
+    private final JButton registerButton = new JButton("Registrar-se");
+    private final JButton enterButton = new JButton("Entrar");
+    private final LoginViewController control = new LoginViewController(this);
+    
+    public LoginView() {
         setSize(315, 300);
-        setModal(true);
-        setTitle("Novo usuário");
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
+        setTitle("Login");
         createView();
         setVisible(true);
     }
 
     private void createView() {
         add(south, "South");
-        south.add(confirmButton);
-        south.add(cancelButton);
         south.setBackground(new ColorUIResource(130, 188, 224));
-        confirmButton.setName("confirm");
-        confirmButton.setToolTipText("Criar novo usuário");
-        confirmButton.addActionListener(control);
-        confirmButton.addKeyListener(control);
-        cancelButton.setName("cancel");
-        cancelButton.addActionListener(control);
-        cancelButton.setMnemonic('C');
-        confirmpField.addKeyListener(control);
+        south.add(registerButton);
+        south.add(enterButton);
+        registerButton.setToolTipText("Cadastre um novo usuário (ALT + N)");
+        registerButton.setMnemonic('N');
+        registerButton.setName("register");
+        registerButton.addActionListener(control);
+        enterButton.setToolTipText("Entre com um usuário existente (ALT + E)");
+        enterButton.setMnemonic('E');
+        enterButton.setName("enter");
+        enterButton.addActionListener(control);
+        enterButton.addKeyListener(control);
+        passwordField.addKeyListener(control);
         add(center, "Center");
-        center.setBorder(BorderFactory.createTitledBorder("Novo usuário"));
+        center.setBorder(BorderFactory.createTitledBorder("Login"));
         center.setLayout(new GridBagLayout());
         GridBagConstraints cons = new GridBagConstraints();
+        // cons.fill = GridBagConstraints.HORIZONTAL;
         cons.insets = new InsetsUIResource(7, 7, 7, 7);
 
         cons.gridx = 0;
@@ -90,7 +92,7 @@ public class RegisterView extends JDialog{
 
         cons.gridx = 1;
         cons.gridy = 0;
-        center.add(usertTextField, cons);
+        center.add(userField, cons);
 
         cons.gridx = 0;
         cons.gridy = 1;
@@ -98,28 +100,15 @@ public class RegisterView extends JDialog{
 
         cons.gridx = 1;
         cons.gridy = 1;
-        center.add(pField, cons);
-
-        cons.gridx = 0;
-        cons.gridy = 2;
-        center.add(confirmpassLabel, cons);
-
-        cons.gridx = 1;
-        cons.gridy = 2;
-        center.add(confirmpField, cons);
+        center.add(passwordField, cons);
     }
 
     public Login getLogin() {
         Login log = new Login();
-        log.setUser(usertTextField.getText());
-        String pass = new String(pField.getPassword());
-        String confirmPass = new String(confirmpField.getPassword());
+        log.setUser(userField.getText());
+        String pass = new String(passwordField.getPassword());
+        log.setPassword(pass);
 
-        if (confirmPass.equals(pass)) {
-            log.setPassword(pass);
-            return log;
-        } 
-
-        return null;
+        return log;
     }
 }

@@ -23,7 +23,7 @@
  * THE SOFTWARE.
  * =====LICENSE-END=====
  */
-package br.univille.loginproject.entitys;
+package br.univille.login.entitys;
 
 public final class Login {
     
