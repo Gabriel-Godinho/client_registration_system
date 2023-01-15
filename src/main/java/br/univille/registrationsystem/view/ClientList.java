@@ -49,18 +49,15 @@ public class ClientList extends JFrame{
     private final JTable tabel = new JTable(model);
     
     public ClientList() {
-
         setSize(900, 700);
         setTitle("Listagem de Clientes");
         setLocationRelativeTo(null); // Cria a janela no meio da tela
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         createPanel();
         setVisible(true);
-
     }
 
     private void createPanel() {
-
         panelSouth.setLayout(new FlowLayout(FlowLayout.LEFT)); // FlowLayout - Coloca os componentes lado a lado
         add(panelSouth, "South");
         panelSouth.setBackground(new ColorUIResource(187, 217, 194));
@@ -92,18 +89,13 @@ public class ClientList extends JFrame{
         panelCenter.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         
         add(panelCenter, "Center");
-        
     }
 
     public void updateTable() {
-
         model.fireTableDataChanged();
-
     }
 
     public int rowNumber() {
-
         return tabel.getSelectedRow();
-        
     }
 }

@@ -43,32 +43,26 @@ public class RegisterViewController implements ActionListener, KeyListener{
     private final LoginService service = new LoginService();
 
     public RegisterViewController(RegisterView rv) {
-
         this.rv = rv;
-
     }
 
     // Método da interface ActionListener
     @Override
     public void actionPerformed(ActionEvent e) {
-
         JComponent clicked = (JComponent)e.getSource();
 
         switch (clicked.getName()) {
             case "confirm":
                 confirmButton();
                 break;
-
             case "cancel":
                 cancelButton();
                 break;
-        }   
-
+        }
     }
 
     // Método que será executado quando o botão Registrar for pressionado
     private void confirmButton() {
-
         Login login = rv.getLogin();
 
         try {
@@ -84,24 +78,19 @@ public class RegisterViewController implements ActionListener, KeyListener{
         } catch (NullPointerException e) {           
             JOptionPane.showMessageDialog(null, "As senhas não são iguais!", "Ops!", JOptionPane.ERROR_MESSAGE);       
         }
-
     }
 
     // Método que será executado quando o botão Cancelar for pressionado
     private void cancelButton() {
-
         rv.dispose();
-
     }
 
     // Métodos da interface KeyListener
     @Override
     public void keyPressed(KeyEvent e) {
-
         if (e.getKeyCode() == KeyEvent.VK_ENTER) {
             confirmButton();       
         }
-        
     }
     
     @Override

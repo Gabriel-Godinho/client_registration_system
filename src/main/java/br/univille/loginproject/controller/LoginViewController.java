@@ -53,32 +53,26 @@ public class LoginViewController implements ActionListener, KeyListener{
     // Método da interface ActionListener
     @Override
     public void actionPerformed(ActionEvent e) {
-
         JComponent clicked = (JComponent)e.getSource();
 
         switch(clicked.getName()){
             case "register":
                 registerClick();
                 break;
-            
             case "enter":
                 enterClick();
                 break;
-        }  
-
+        }
     }
 
     // Método que será executado quando o botão Registrar-se for pressionado
     private void registerClick() {
-
         RegisterView rview = new RegisterView();
         System.out.println(rview.getX());
-
     }
 
     // Método que será executado quando o botão Entrar for pressionado
     private void enterClick() {
-
         Login username = lv.getLogin();
 
         if (ls.enter(username)) {
@@ -88,17 +82,14 @@ public class LoginViewController implements ActionListener, KeyListener{
         } else {
             JOptionPane.showMessageDialog(null, "Usuário não registrado!", "Ops!", JOptionPane.ERROR_MESSAGE);
         }
-
     }
 
     // Métodos da interface KeyListener
     @Override
     public void keyPressed(KeyEvent e) {
-        
         if (e.getKeyCode() == KeyEvent.VK_ENTER) {
             enterClick();
         }
-
     }
     
     @Override

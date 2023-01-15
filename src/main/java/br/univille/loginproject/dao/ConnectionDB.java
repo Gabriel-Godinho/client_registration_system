@@ -30,8 +30,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionDB {
-    
-    // SINGLETON
+
     private final Connection conn;
     private static ConnectionDB instance;
 
@@ -41,22 +40,17 @@ public class ConnectionDB {
         final String user = "root";
         final String pass = "univille";
         this.conn = DriverManager.getConnection(connection, user, pass);
-
     }
 
     public static ConnectionDB getInstance() throws SQLException {
-
         if (instance == null)
             instance = new ConnectionDB();
         
         return instance;
-
     }
 
     public Connection getConn() {
-
         return this.conn;
-
     }
     
 }

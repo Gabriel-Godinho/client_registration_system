@@ -58,13 +58,10 @@ public class ClientForm extends JDialog {
     private Client cliente = new Client();
     
     public Client getCliente() {
-
         return cliente;
-
     }
 
     public ClientForm(Client cliente) {
-        
         this.cliente = cliente;
         txtNome.setText(cliente.getName());
         txtCpf.setText(cliente.getCPF());
@@ -80,11 +77,9 @@ public class ClientForm extends JDialog {
         setLocationRelativeTo(null);
         createPanel();
         setVisible(true);
-
     }
 
     private void createPanel() {
-
         add(panelButton, "South");
         panelButton.add(ok);
         ok.setName("ok");
@@ -96,9 +91,7 @@ public class ClientForm extends JDialog {
         cancelar.addActionListener(control);
         cancelar.setMnemonic('C');
         txtBirth.addKeyListener(control);
-
-        panelButton.setBackground(new ColorUIResource(187, 217, 194));        
-        
+        panelButton.setBackground(new ColorUIResource(187, 217, 194));
         add(panelCenter, "Center");
         panelCenter.setBorder(BorderFactory.createTitledBorder("Dados do Cliente"));
         panelCenter.setLayout(new GridBagLayout());
@@ -135,13 +128,10 @@ public class ClientForm extends JDialog {
         gbc.gridx = 1;
         gbc.gridy = 3;
         panelCenter.add(txtBirth, gbc);
-
     }
 
     public Client update(Client cliente) throws InvalidValueException {
-        
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-            
         cliente.setName(txtNome.getText());
         cliente.setCPF(txtCpf.getText());
         
@@ -152,7 +142,5 @@ public class ClientForm extends JDialog {
         }
 
         return cliente;
-
     }
-
 }

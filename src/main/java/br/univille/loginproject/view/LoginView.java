@@ -43,7 +43,6 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 
 /* Construção da tela principal de login*/
-
 public class LoginView extends JFrame{
 
     private final JPanel south = new JPanel();
@@ -57,23 +56,19 @@ public class LoginView extends JFrame{
     private final LoginViewController control = new LoginViewController(this);
     
     public LoginView() {
-
         setSize(315, 300);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setTitle("Login");
         createView();
         setVisible(true);
-        
     }
 
     private void createView() {
-
         add(south, "South");
         south.setBackground(new ColorUIResource(130, 188, 224));
         south.add(registerButton);
         south.add(enterButton);
-        
         registerButton.setToolTipText("Cadastre um novo usuário (ALT + N)");
         registerButton.setMnemonic('N');
         registerButton.setName("register");
@@ -84,10 +79,8 @@ public class LoginView extends JFrame{
         enterButton.addActionListener(control);
         enterButton.addKeyListener(control);
         passwordField.addKeyListener(control);
-
         add(center, "Center");
         center.setBorder(BorderFactory.createTitledBorder("Login"));
-        
         center.setLayout(new GridBagLayout());
         GridBagConstraints cons = new GridBagConstraints();
         // cons.fill = GridBagConstraints.HORIZONTAL;
@@ -108,18 +101,14 @@ public class LoginView extends JFrame{
         cons.gridx = 1;
         cons.gridy = 1;
         center.add(passwordField, cons);
-
     }
 
     public Login getLogin() {
-
         Login log = new Login();
-        
         log.setUser(userField.getText());
         String pass = new String(passwordField.getPassword());
         log.setPassword(pass);
 
         return log;
-        
     }
 }

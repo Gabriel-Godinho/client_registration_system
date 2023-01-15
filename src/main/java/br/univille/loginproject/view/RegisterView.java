@@ -42,7 +42,6 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 
 /* Construção da tela de registro de novo usuário*/
-
 public class RegisterView extends JDialog{
 
     private final JPanel south = new JPanel();
@@ -58,18 +57,15 @@ public class RegisterView extends JDialog{
     private final RegisterViewController control = new RegisterViewController(this);
 
     public RegisterView() {
-
         setSize(315, 300);
         setModal(true);
         setTitle("Novo usuário");
         setLocationRelativeTo(null);
         createView();
         setVisible(true);
-
     }
 
     private void createView() {
-
         add(south, "South");
         south.add(confirmButton);
         south.add(cancelButton);
@@ -82,7 +78,6 @@ public class RegisterView extends JDialog{
         cancelButton.addActionListener(control);
         cancelButton.setMnemonic('C');
         confirmpField.addKeyListener(control);
-        
         add(center, "Center");
         center.setBorder(BorderFactory.createTitledBorder("Novo usuário"));
         center.setLayout(new GridBagLayout());
@@ -112,15 +107,11 @@ public class RegisterView extends JDialog{
         cons.gridx = 1;
         cons.gridy = 2;
         center.add(confirmpField, cons);
-
     }
 
     public Login getLogin() {
-
         Login log = new Login();
-
         log.setUser(usertTextField.getText());
-
         String pass = new String(pField.getPassword());
         String confirmPass = new String(confirmpField.getPassword());
 
@@ -128,8 +119,7 @@ public class RegisterView extends JDialog{
             log.setPassword(pass);
             return log;
         } 
-            
+
         return null;
-                   
     }
 }

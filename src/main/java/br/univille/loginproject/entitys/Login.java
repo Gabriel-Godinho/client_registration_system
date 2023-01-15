@@ -40,9 +40,7 @@ public final class Login {
         return user;
     }
     public void setUser(String user) {
-
         this.user = user;
-
     }
     
     // GET E SET - SENHA
@@ -50,9 +48,7 @@ public final class Login {
         return password;
     }
     public void setPassword(String password) {
-
         this.password = password;
-
     }
 
 }

@@ -33,20 +33,14 @@ public class LoginService {
     private final LoginDAO dao = new LoginDAO();
 
     public boolean enter(Login login) {
-
         return dao.enter(login);
-
     }
 
     public void register(Login login) {
-
         dao.register(login);
-
     }
 
     public boolean compare(String user) {
-
         return dao.compare(user);
-        
     }
 }

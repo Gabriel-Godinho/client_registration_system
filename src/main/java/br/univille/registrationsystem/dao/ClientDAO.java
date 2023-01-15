@@ -31,7 +31,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import java.text.SimpleDateFormat;
-
 import java.util.ArrayList;
 
 import br.univille.registrationsystem.entity.Client;
@@ -39,9 +38,7 @@ import br.univille.registrationsystem.entity.Client;
 public class ClientDAO {
     
     public final ArrayList<Client> getAll() {
-
         ArrayList<Client> list = new ArrayList<>();
-        
         try {
             Connection conn = ConnectionDB.getInstance().getConn();
             String sql = "SELECT * FROM clients";
@@ -56,17 +53,14 @@ public class ClientDAO {
                 newClient.setBirthDate(rs.getDate("birthdate"));
                 list.add(newClient);
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
         return list;
-
     }
 
     public final void save(Client client) {
-
         try {
             Connection conn = ConnectionDB.getInstance().getConn();
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -87,15 +81,12 @@ public class ClientDAO {
                 ps.setLong(4, client.getId());
                 ps.executeUpdate();
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 
     public final void delete(long id) {
-
         try {
             Connection conn = ConnectionDB.getInstance().getConn();
             String delete = "DELETE FROM clients WHERE id = ?";
@@ -105,7 +96,5 @@ public class ClientDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
-
 }
