@@ -60,7 +60,7 @@ public class ClientList extends JFrame{
     private void createPanel() {
         panelSouth.setLayout(new FlowLayout(FlowLayout.LEFT)); // FlowLayout - Coloca os componentes lado a lado
         add(panelSouth, "South");
-        panelSouth.setBackground(new ColorUIResource(187, 217, 194));
+        panelSouth.setBackground(new ColorUIResource(130, 188, 224));
         panelSouth.add(btnNew);
         panelSouth.add(btnUpdate);
         panelSouth.add(btnDelete);

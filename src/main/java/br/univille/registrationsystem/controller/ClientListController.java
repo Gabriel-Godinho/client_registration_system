@@ -56,31 +56,25 @@ public class ClientListController implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent e) {
-
         JComponent clickedButton = (JComponent)e.getSource();
 
         switch (clickedButton.getName()) {
             case "new":
                 btnNewClick();
                 break;
-
             case "update":
                 btnUpdateClick();
                 break;
-            
             case "delete":
                 btnDeleteClick();
                 break;
-
             case "exit":
                 btnExitClick();
                 break;
         }
-
     }
     
     private void btnNewClick() {
-
         Client newClient = new Client();
         ClientForm form = new ClientForm(newClient);
 
@@ -88,14 +82,10 @@ public class ClientListController implements ActionListener{
             service.save(newClient);
         }
 
-        System.out.println(form.getX());
-
         list.updateTable();
-
     }
 
     private void btnUpdateClick() {
-
         int index = list.rowNumber();
 
         if (index >= 0) {
@@ -108,11 +98,9 @@ public class ClientListController implements ActionListener{
         } else {
             JOptionPane.showMessageDialog(null, "Selecione um cliente para alterar!", "Aviso", JOptionPane.WARNING_MESSAGE);
         }
-
     }
 
-    private void btnDeleteClick() {     
-
+    private void btnDeleteClick() {
         int index = list.rowNumber();
         
         if (index >= 0) {
@@ -128,15 +116,14 @@ public class ClientListController implements ActionListener{
         } else {
             JOptionPane.showMessageDialog(null, "Selecione um cliente para excluir!", "Aviso", JOptionPane.WARNING_MESSAGE);
         }
-
     }
     
     private void btnExitClick() {
         int response = JOptionPane.showConfirmDialog(null, "Deseja sair?", "Confirmação", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
 
-        if (response == JOptionPane.YES_OPTION)
+        if (response == JOptionPane.YES_OPTION) {
             list.dispose();
-
+            System.exit(0);
+        }
     }
-
 }

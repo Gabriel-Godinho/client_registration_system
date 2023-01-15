@@ -44,30 +44,24 @@ public class ClientFormController implements ActionListener, KeyListener{
     private final ClientService service = new ClientService();
     
     public ClientFormController(ClientForm formcli) {
-
         this.clientForm = formcli;
-
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
         JComponent clicked = (JComponent)e.getSource();
 
         switch (clicked.getName()) {
             case "ok":
                 okClick();               
                 break;
-        
-            case "cancelar":
+            case "cancel":
                 cancelClick();
                 break;
-        }    
-
+        }
     }
     
     private void okClick() {
-        
         try {
             var client = clientForm.getCliente();
             validation(clientForm.update(client));
@@ -79,33 +73,23 @@ public class ClientFormController implements ActionListener, KeyListener{
         } catch (InvalidValueException e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Erro!", JOptionPane.ERROR_MESSAGE);
         }
-
     }
 
     private void cancelClick() {
-
         clientForm.dispose();
-
     }
 
     private void validation(Client client) throws InvalidValueException {
-        
-        if (client.getName() == null || client.getName().isEmpty()) {
+        if (client.getName() == null || client.getName().isEmpty())
             throw new InvalidValueException("O nome não pode ser deixado em branco!", null);
-        }
-        if (client.getCPF() == null || client.getCPF().isEmpty()) {
+        if (client.getCPF() == null || client.getCPF().isEmpty())
             throw new InvalidValueException("O CPF não pode ser deixado em branco!", null);
-        }
-
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
-
-        if (e.getKeyCode() == KeyEvent.VK_ENTER){
+        if (e.getKeyCode() == KeyEvent.VK_ENTER)
             okClick();
-        }
-
     }
 
     @Override
@@ -113,5 +97,4 @@ public class ClientFormController implements ActionListener, KeyListener{
 
     @Override
     public void keyReleased(KeyEvent e) {}
-
 }

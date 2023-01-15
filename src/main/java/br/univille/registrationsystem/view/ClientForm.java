@@ -87,11 +87,11 @@ public class ClientForm extends JDialog {
         ok.addActionListener(control);
         ok.addKeyListener(control);
         panelButton.add(cancelar);
-        cancelar.setName("cancelar");
+        cancelar.setName("cancel");
         cancelar.addActionListener(control);
         cancelar.setMnemonic('C');
         txtBirth.addKeyListener(control);
-        panelButton.setBackground(new ColorUIResource(187, 217, 194));
+        panelButton.setBackground(new ColorUIResource(130, 188, 224));
         add(panelCenter, "Center");
         panelCenter.setBorder(BorderFactory.createTitledBorder("Dados do Cliente"));
         panelCenter.setLayout(new GridBagLayout());
