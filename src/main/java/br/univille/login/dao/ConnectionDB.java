@@ -2,7 +2,7 @@
  * =====LICENSE-START=====
  * Java 11 Application
  * ------
- * Copyright (C) 2020 - 2022 Organization Name
+ * Copyright (C) 2020 - 2022 Gabriel Godinho
  * ------
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -35,7 +35,6 @@ public class ConnectionDB {
     private static ConnectionDB instance;
 
     private ConnectionDB() throws SQLException {
-        // Nenhum dado importante dentro deste banco de dados
         final String connection = "jdbc:mariadb://localhost/loginsistem";
         final String user = "root";
         final String pass = "univille";
@@ -43,8 +42,7 @@ public class ConnectionDB {
     }
 
     public static ConnectionDB getInstance() throws SQLException {
-        if (instance == null)
-            instance = new ConnectionDB();
+        if (instance == null) instance = new ConnectionDB();
         
         return instance;
     }

@@ -2,7 +2,7 @@
  * =====LICENSE-START=====
  * Java 11 Application
  * ------
- * Copyright (C) 2020 - 2022 Organization Name
+ * Copyright (C) 2020 - 2022 Gabriel Godinho
  * ------
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -45,12 +45,9 @@ public class LoginViewController implements ActionListener, KeyListener{
     private final LoginView lv;
 
     public LoginViewController(LoginView lv) {
-
         this.lv = lv;
-        
     }
 
-    // Método da interface ActionListener
     @Override
     public void actionPerformed(ActionEvent e) {
         JComponent clicked = (JComponent)e.getSource();
@@ -65,26 +62,21 @@ public class LoginViewController implements ActionListener, KeyListener{
         }
     }
 
-    // Método que será executado quando o botão Registrar-se for pressionado
     private void registerClick() {
         RegisterView rview = new RegisterView();
-        System.out.println(rview.getX());
     }
 
-    // Método que será executado quando o botão Entrar for pressionado
     private void enterClick() {
         Login username = lv.getLogin();
 
         if (ls.enter(username)) {
             lv.setVisible(false);
             ClientList list = new ClientList();
-            System.out.println(list.getX());
         } else {
             JOptionPane.showMessageDialog(null, "Usuário não registrado!", "Ops!", JOptionPane.ERROR_MESSAGE);
         }
     }
 
-    // Métodos da interface KeyListener
     @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_ENTER) {
@@ -96,5 +88,6 @@ public class LoginViewController implements ActionListener, KeyListener{
     public void keyTyped(KeyEvent e) {}
 
     @Override
-    public void keyReleased(KeyEvent e) {}    
+    public void keyReleased(KeyEvent e) {}
+
 }

@@ -2,7 +2,7 @@
  * =====LICENSE-START=====
  * Java 11 Application
  * ------
- * Copyright (C) 2020 - 2022 Organization Name
+ * Copyright (C) 2020 - 2022 Gabriel Godinho
  * ------
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -42,7 +42,6 @@ import br.univille.login.entitys.Login;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 
-/* Construção da tela principal de login*/
 public class LoginView extends JFrame{
 
     private final JPanel south = new JPanel();
@@ -111,4 +110,5 @@ public class LoginView extends JFrame{
 
         return log;
     }
+
 }

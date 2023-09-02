@@ -2,7 +2,7 @@
  * =====LICENSE-START=====
  * Java 11 Application
  * ------
- * Copyright (C) 2020 - 2022 Organization Name
+ * Copyright (C) 2020 - 2022 Gabriel Godinho
  * ------
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -43,4 +43,5 @@ public class LoginService {
     public boolean compare(String user) {
         return dao.compare(user);
     }
+
 }

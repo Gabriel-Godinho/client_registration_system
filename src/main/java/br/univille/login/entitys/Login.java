@@ -2,7 +2,7 @@
  * =====LICENSE-START=====
  * Java 11 Application
  * ------
- * Copyright (C) 2020 - 2022 Organization Name
+ * Copyright (C) 2020 - 2022 Gabriel Godinho
  * ------
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -35,15 +35,13 @@ public final class Login {
         this.password = "";
     }
 
-    // GET E SET - USUÁRIO
     public String getUser() {
         return user;
     }
     public void setUser(String user) {
         this.user = user;
     }
-    
-    // GET E SET - SENHA
+
     public String getPassword() {
         return password;
     }

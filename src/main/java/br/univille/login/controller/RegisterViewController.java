@@ -2,7 +2,7 @@
  * =====LICENSE-START=====
  * Java 11 Application
  * ------
- * Copyright (C) 2020 - 2022 Organization Name
+ * Copyright (C) 2020 - 2022 Gabriel Godinho
  * ------
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -46,7 +46,6 @@ public class RegisterViewController implements ActionListener, KeyListener{
         this.rv = rv;
     }
 
-    // Método da interface ActionListener
     @Override
     public void actionPerformed(ActionEvent e) {
         JComponent clicked = (JComponent)e.getSource();
@@ -61,7 +60,6 @@ public class RegisterViewController implements ActionListener, KeyListener{
         }
     }
 
-    // Método que será executado quando o botão Registrar for pressionado
     private void confirmButton() {
         Login login = rv.getLogin();
 
@@ -80,12 +78,10 @@ public class RegisterViewController implements ActionListener, KeyListener{
         }
     }
 
-    // Método que será executado quando o botão Cancelar for pressionado
     private void cancelButton() {
         rv.dispose();
     }
 
-    // Métodos da interface KeyListener
     @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_ENTER) {
@@ -97,5 +93,6 @@ public class RegisterViewController implements ActionListener, KeyListener{
     public void keyTyped(KeyEvent e) {}
 
     @Override
-    public void keyReleased(KeyEvent e) {}    
+    public void keyReleased(KeyEvent e) {}
+
 }

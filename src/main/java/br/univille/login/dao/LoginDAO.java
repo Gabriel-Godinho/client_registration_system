@@ -2,7 +2,7 @@
  * =====LICENSE-START=====
  * Java 11 Application
  * ------
- * Copyright (C) 2020 - 2022 Organization Name
+ * Copyright (C) 2020 - 2022 Gabriel Godinho
  * ------
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -33,15 +33,7 @@ import java.sql.SQLException;
 import br.univille.login.entitys.Login;
 
 public class LoginDAO {
-    
-    /**
-     * Método responsável por identificar se o usuário 
-     * e a senha digitados na tela principal já existem no banco de dados.
-     * Caso o usuário e a senha existam no banco, o método 
-     * retornará true. Caso não, retornará false.
-     * @param login
-     * @return boolean
-     */
+
     public final boolean enter(Login login) {
         try {
             Connection connec = ConnectionDB.getInstance().getConn();
@@ -60,11 +52,6 @@ public class LoginDAO {
         return false;
     }
 
-    /**
-     * Método responsável por inserir o usuário
-     * e a senha digitados na tela de registro dentro do banco de dados.
-     * @param login
-    */
     public final void register(Login login) {
         try {
             Connection connec = ConnectionDB.getInstance().getConn();
@@ -78,13 +65,6 @@ public class LoginDAO {
         }
     }
 
-    /**
-     * Método responsável por analisar se o nome de usuário
-     * digitado na tela de registro já existe no banco de dados.
-     * Caso exista, o método retorna true. Caso não, retornará false.
-     * @param user
-     * @return boolean
-     */
     public final boolean compare(String user) {
         try {
             Connection connec = ConnectionDB.getInstance().getConn();
@@ -101,4 +81,5 @@ public class LoginDAO {
 
         return false;
     }
+
 }
