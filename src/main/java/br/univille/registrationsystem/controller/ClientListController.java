@@ -2,7 +2,7 @@
  * =====LICENSE-START=====
  * Java 11 Application
  * ------
- * Copyright (C) 2020 - 2022 Organization Name
+ * Copyright (C) 2020 - 2022 Gabriel Godinho
  * ------
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -37,21 +37,17 @@ import br.univille.registrationsystem.service.ClientService;
 import br.univille.registrationsystem.view.ClientForm;
 import br.univille.registrationsystem.view.ClientList;
 
-public class ClientListController implements ActionListener{
+public class ClientListController implements ActionListener {
 
     private final ClientService service = new ClientService();
     private final ClientList list;
     
     public ClientListController(ClientList list) {
-
         this.list = list;
-
     }
 
     public ArrayList<Client> getAllClients() {
-
         return service.getAllClients();
-
     }
     
     @Override
@@ -78,9 +74,7 @@ public class ClientListController implements ActionListener{
         Client newClient = new Client();
         ClientForm form = new ClientForm(newClient);
 
-        if (newClient.getId() != -1) {
-            service.save(newClient);
-        }
+        if (newClient.getId() != -1) service.save(newClient);
 
         list.updateTable();
     }
@@ -105,7 +99,6 @@ public class ClientListController implements ActionListener{
         
         if (index >= 0) {
             Client client = this.getAllClients().get(index);
-
             int response = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir?", "Confirmação", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
 
             if (response == JOptionPane.YES_OPTION) {
@@ -126,4 +119,5 @@ public class ClientListController implements ActionListener{
             System.exit(0);
         }
     }
+
 }

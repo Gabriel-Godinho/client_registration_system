@@ -121,5 +121,5 @@ public class RegisterView extends JDialog{
 
         return null;
     }
-    
+
 }
