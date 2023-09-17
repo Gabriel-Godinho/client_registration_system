@@ -47,14 +47,14 @@ import java.awt.GridBagConstraints;
 
 public class ClientForm extends JDialog {
     
-    private final JPanel panelCenter = new JPanel();
-    private final JPanel panelButton = new JPanel();
-    private final JButton ok = new JButton("OK");
-    private final JButton cancelar = new JButton("Cancelar");
-    private final JTextField txtNome = new JTextField(20);
-    private final JTextField txtCpf = new JTextField(10);
+    private final JPanel PANEL_CENTER = new JPanel();
+    private final JPanel PANEL_BUTTON = new JPanel();
+    private final JButton OK_BUTTON = new JButton("OK");
+    private final JButton CANCEL_BUTTON = new JButton("Cancelar");
+    private final JTextField TXT_NOME = new JTextField(20);
+    private final JTextField TXT_CPF = new JTextField(10);
     private JFormattedTextField txtBirth = new JFormattedTextField(12);
-    private final ClientFormController control = new ClientFormController(this);
+    private final ClientFormController CONTROL = new ClientFormController(this);
     private Client cliente = new Client();
     
     public Client getCliente() {
@@ -63,9 +63,8 @@ public class ClientForm extends JDialog {
 
     public ClientForm(Client cliente) {
         this.cliente = cliente;
-        txtNome.setText(cliente.getName());
-        txtCpf.setText(cliente.getCPF());
-
+        TXT_NOME.setText(cliente.getName());
+        TXT_CPF.setText(cliente.getCPF());
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         if (cliente.getBirthDate() != null){
             txtBirth.setText(sdf.format(cliente.getBirthDate()));
@@ -73,50 +72,50 @@ public class ClientForm extends JDialog {
         
         setSize(500, 250);
         setTitle("Formulário");
-        setModal(true); // Bloquear o usuário
+        setModal(true);
         setLocationRelativeTo(null);
         createPanel();
         setVisible(true);
     }
 
     private void createPanel() {
-        add(panelButton, "South");
-        panelButton.add(ok);
-        ok.setName("ok");
-        this.getRootPane().setDefaultButton(ok);
-        ok.addActionListener(control);
-        ok.addKeyListener(control);
-        panelButton.add(cancelar);
-        cancelar.setName("cancel");
-        cancelar.addActionListener(control);
-        cancelar.setMnemonic('C');
-        txtBirth.addKeyListener(control);
-        panelButton.setBackground(new ColorUIResource(130, 188, 224));
-        add(panelCenter, "Center");
-        panelCenter.setBorder(BorderFactory.createTitledBorder("Dados do Cliente"));
-        panelCenter.setLayout(new GridBagLayout());
+        add(PANEL_BUTTON, "South");
+        PANEL_BUTTON.add(OK_BUTTON);
+        OK_BUTTON.setName("ok");
+        this.getRootPane().setDefaultButton(OK_BUTTON);
+        OK_BUTTON.addActionListener(CONTROL);
+        OK_BUTTON.addKeyListener(CONTROL);
+        PANEL_BUTTON.add(CANCEL_BUTTON);
+        CANCEL_BUTTON.setName("cancel");
+        CANCEL_BUTTON.addActionListener(CONTROL);
+        CANCEL_BUTTON.setMnemonic('C');
+        txtBirth.addKeyListener(CONTROL);
+        PANEL_BUTTON.setBackground(new ColorUIResource(130, 188, 224));
+        add(PANEL_CENTER, "Center");
+        PANEL_CENTER.setBorder(BorderFactory.createTitledBorder("Dados do Cliente"));
+        PANEL_CENTER.setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.insets = new InsetsUIResource(5, 5, 5, 5);
 
         gbc.gridx = 0;
         gbc.gridy = 1;
-        panelCenter.add(new JLabel("Nome:"), gbc);
+        PANEL_CENTER.add(new JLabel("Nome:"), gbc);
         gbc.gridx = 1;
         gbc.gridy = 1;
-        panelCenter.add(txtNome, gbc);
+        PANEL_CENTER.add(TXT_NOME, gbc);
 
         gbc.gridx = 0;
         gbc.gridy = 2;
-        panelCenter.add(new JLabel("CPF:"), gbc);
+        PANEL_CENTER.add(new JLabel("CPF:"), gbc);
                 
         gbc.gridx = 1;
         gbc.gridy = 2;
-        panelCenter.add(txtCpf, gbc);
+        PANEL_CENTER.add(TXT_CPF, gbc);
 
         gbc.gridx = 0;
         gbc.gridy = 3;
-        panelCenter.add(new JLabel("Data de nascimento:"), gbc);
+        PANEL_CENTER.add(new JLabel("Data de nascimento:"), gbc);
 
         try {
             MaskFormatter maskBirth = new MaskFormatter("##/##/####");
@@ -127,13 +126,13 @@ public class ClientForm extends JDialog {
 
         gbc.gridx = 1;
         gbc.gridy = 3;
-        panelCenter.add(txtBirth, gbc);
+        PANEL_CENTER.add(txtBirth, gbc);
     }
 
     public Client update(Client cliente) throws InvalidValueException {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        cliente.setName(txtNome.getText());
-        cliente.setCPF(txtCpf.getText());
+        cliente.setName(TXT_NOME.getText());
+        cliente.setCPF(TXT_CPF.getText());
         
         try {
             cliente.setBirthDate(sdf.parse(txtBirth.getText()));

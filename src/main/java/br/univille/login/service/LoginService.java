@@ -30,18 +30,18 @@ import br.univille.login.entitys.Login;
 
 public class LoginService {
     
-    private final LoginDAO dao = new LoginDAO();
+    private final LoginDAO LOGIN_DAO = new LoginDAO();
 
     public boolean enter(Login login) {
-        return dao.enter(login);
+        return LOGIN_DAO.enter(login);
     }
 
     public void register(Login login) {
-        dao.register(login);
+        LOGIN_DAO.register(login);
     }
 
     public boolean compare(String user) {
-        return dao.compare(user);
+        return LOGIN_DAO.compare(user);
     }
 
 }

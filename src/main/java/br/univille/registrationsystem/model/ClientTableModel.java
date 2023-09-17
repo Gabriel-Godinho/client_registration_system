@@ -30,60 +30,47 @@ import java.text.SimpleDateFormat;
 import javax.swing.table.AbstractTableModel;
 
 import br.univille.registrationsystem.controller.ClientListController;
+import br.univille.registrationsystem.entity.Client;
 
 public class ClientTableModel extends AbstractTableModel{
 
-    private final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-    private final ClientListController controller;
+    private final SimpleDateFormat SDF = new SimpleDateFormat("dd/MM/yyyy");
+    private final ClientListController CONTROLLER;
 
     public ClientTableModel(ClientListController controller) {
-
-        this.controller = controller;
-
+        this.CONTROLLER = controller;
     }
 
     @Override
     public int getRowCount() {
-
-        return controller.getAllClients().size();
-
+        return CONTROLLER.getAllClients().size();
     }
 
     @Override
-    public int getColumnCount() {   
-
+    public int getColumnCount() {
         return 4;
-
     }
 
     @Override
-    public Object getValueAt(int rowIndex, int columnIndex) { 
-
-        var client = controller.getAllClients().get(rowIndex);
-        
+    public Object getValueAt(int rowIndex, int columnIndex) {
+        Client client = CONTROLLER.getAllClients().get(rowIndex);
         switch (columnIndex) {
             case 0:
                 return client.getId();
-            
             case 1:
                 return client.getName();
-
             case 2:
                 return client.getCPF();
-
             case 3:
-                return sdf.format(client.getBirthDate());
-            
+                return SDF.format(client.getBirthDate());
             default:
                 return null;
         }
-        
     }
 
     @Override
     public String getColumnName(int column) {
+        return new String[] {"Código", "Nome", "CPF", "Data de Nascimento"}[column];
+    }
 
-        return new String[]{"Código", "Nome", "CPF", "Data de Nascimento"}[column];
-
-    }    
 }

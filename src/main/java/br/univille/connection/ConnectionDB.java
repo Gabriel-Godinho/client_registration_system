@@ -31,14 +31,14 @@ import java.sql.SQLException;
 
 public class ConnectionDB {
 
-    private final Connection conn;
+    private final Connection CONN;
     private static ConnectionDB instance;
     
     private ConnectionDB() throws SQLException{
         final String stringConexao = "jdbc:mariadb://localhost/loginsistem";
         final String user = "root";
         final String pass = "univille";
-        this.conn = DriverManager.getConnection(stringConexao, user, pass);
+        this.CONN = DriverManager.getConnection(stringConexao, user, pass);
     }
 
     public static ConnectionDB getInstance() throws SQLException{
@@ -48,7 +48,7 @@ public class ConnectionDB {
     }
 
     public Connection getConn() {
-        return this.conn;
+        return this.CONN;
     }
 
 }

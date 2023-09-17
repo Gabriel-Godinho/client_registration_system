@@ -43,17 +43,17 @@ import java.awt.GridBagConstraints;
 
 public class RegisterView extends JDialog{
 
-    private final JPanel south = new JPanel();
-    private final JPanel center = new JPanel();
-    private final JButton confirmButton = new JButton("Registrar");
-    private final JButton cancelButton = new JButton("Cancelar");
-    private final JLabel userLabel = new JLabel("Nome de usuário");
-    private final JLabel passLabel = new JLabel("Senha");
-    private final JLabel confirmpassLabel = new JLabel("Confirme a senha");
-    private final JTextField usertTextField = new JTextField(15);
-    private final JPasswordField pField = new JPasswordField(15);
-    private final JPasswordField confirmpField = new JPasswordField(15);
-    private final RegisterViewController control = new RegisterViewController(this);
+    private final JPanel PANEL_SOUTH = new JPanel();
+    private final JPanel PANEL_CENTER = new JPanel();
+    private final JButton CONFIRM_BUTTON = new JButton("Registrar");
+    private final JButton CANCEL_BUTTON = new JButton("Cancelar");
+    private final JLabel USER_LABEL = new JLabel("Nome de usuário");
+    private final JLabel PASSWORD_LABEL = new JLabel("Senha");
+    private final JLabel CONFIRM_PASSWORD_LABEL = new JLabel("Confirme a senha");
+    private final JTextField TXT_USER = new JTextField(15);
+    private final JPasswordField PASSWORD_FIELD = new JPasswordField(15);
+    private final JPasswordField CONFIRM_PASSWORD_FIELD = new JPasswordField(15);
+    private final RegisterViewController CONTROLLER = new RegisterViewController(this);
 
     public RegisterView() {
         setSize(315, 300);
@@ -65,54 +65,54 @@ public class RegisterView extends JDialog{
     }
 
     private void createView() {
-        add(south, "South");
-        south.add(confirmButton);
-        south.add(cancelButton);
-        south.setBackground(new ColorUIResource(130, 188, 224));
-        confirmButton.setName("confirm");
-        confirmButton.setToolTipText("Criar novo usuário");
-        confirmButton.addActionListener(control);
-        confirmButton.addKeyListener(control);
-        cancelButton.setName("cancel");
-        cancelButton.addActionListener(control);
-        cancelButton.setMnemonic('C');
-        confirmpField.addKeyListener(control);
-        add(center, "Center");
-        center.setBorder(BorderFactory.createTitledBorder("Novo usuário"));
-        center.setLayout(new GridBagLayout());
+        add(PANEL_SOUTH, "South");
+        PANEL_SOUTH.add(CONFIRM_BUTTON);
+        PANEL_SOUTH.add(CANCEL_BUTTON);
+        PANEL_SOUTH.setBackground(new ColorUIResource(130, 188, 224));
+        CONFIRM_BUTTON.setName("confirm");
+        CONFIRM_BUTTON.setToolTipText("Criar novo usuário");
+        CONFIRM_BUTTON.addActionListener(CONTROLLER);
+        CONFIRM_BUTTON.addKeyListener(CONTROLLER);
+        CANCEL_BUTTON.setName("cancel");
+        CANCEL_BUTTON.addActionListener(CONTROLLER);
+        CANCEL_BUTTON.setMnemonic('C');
+        CONFIRM_PASSWORD_FIELD.addKeyListener(CONTROLLER);
+        add(PANEL_CENTER, "Center");
+        PANEL_CENTER.setBorder(BorderFactory.createTitledBorder("Novo usuário"));
+        PANEL_CENTER.setLayout(new GridBagLayout());
         GridBagConstraints cons = new GridBagConstraints();
         cons.insets = new InsetsUIResource(7, 7, 7, 7);
 
         cons.gridx = 0;
         cons.gridy = 0;
-        center.add(userLabel, cons);
+        PANEL_CENTER.add(USER_LABEL, cons);
 
         cons.gridx = 1;
         cons.gridy = 0;
-        center.add(usertTextField, cons);
+        PANEL_CENTER.add(TXT_USER, cons);
 
         cons.gridx = 0;
         cons.gridy = 1;
-        center.add(passLabel, cons);
+        PANEL_CENTER.add(PASSWORD_LABEL, cons);
 
         cons.gridx = 1;
         cons.gridy = 1;
-        center.add(pField, cons);
+        PANEL_CENTER.add(PASSWORD_FIELD, cons);
 
         cons.gridx = 0;
         cons.gridy = 2;
-        center.add(confirmpassLabel, cons);
+        PANEL_CENTER.add(CONFIRM_PASSWORD_LABEL, cons);
 
         cons.gridx = 1;
         cons.gridy = 2;
-        center.add(confirmpField, cons);
+        PANEL_CENTER.add(CONFIRM_PASSWORD_FIELD, cons);
     }
 
     public Login getLogin() {
         Login log = new Login();
-        log.setUser(usertTextField.getText());
-        String pass = new String(pField.getPassword());
-        String confirmPass = new String(confirmpField.getPassword());
+        log.setUser(TXT_USER.getText());
+        String pass = new String(PASSWORD_FIELD.getPassword());
+        String confirmPass = new String(CONFIRM_PASSWORD_FIELD.getPassword());
 
         if (confirmPass.equals(pass)) {
             log.setPassword(pass);

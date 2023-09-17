@@ -32,23 +32,18 @@ import br.univille.registrationsystem.entity.Client;
 
 public final class ClientService {
     
-    private final ClientDAO daoClient = new ClientDAO();
+    private final ClientDAO DAO_CLIENT = new ClientDAO();
 
     public ArrayList<Client> getAllClients() {
-
-        return daoClient.getAll();
-
+        return DAO_CLIENT.getAll();
     }
 
     public void save(Client client) {
-
-        daoClient.save(client);
-
+        DAO_CLIENT.save(client);
     }
 
     public void remove(Client client) {
-
-        daoClient.delete(client.getId());
-        
+        DAO_CLIENT.delete(client.getId());
     }
+
 }

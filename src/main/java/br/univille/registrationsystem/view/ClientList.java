@@ -39,14 +39,14 @@ import br.univille.registrationsystem.model.ClientTableModel;
 
 public class ClientList extends JFrame{
 
-    private final JPanel panelSouth = new JPanel();
-    private final JButton btnNew = new JButton("Novo");
-    private final JButton btnUpdate = new JButton("Alterar");
-    private final JButton btnDelete = new JButton("Excluir");
-    private final JButton btnExit = new JButton("Sair do sistema");
-    private final ClientListController controller = new ClientListController(this);
-    private final ClientTableModel model = new ClientTableModel(controller); // Instância do controlador;
-    private final JTable tabel = new JTable(model);
+    private final JPanel PANEL_SOUTH = new JPanel();
+    private final JButton BTN_NEW = new JButton("Novo");
+    private final JButton BTN_UPDATE = new JButton("Alterar");
+    private final JButton BTN_DELETE = new JButton("Excluir");
+    private final JButton BTN_EXIT = new JButton("Sair do sistema");
+    private final ClientListController CONTROLLER = new ClientListController(this);
+    private final ClientTableModel TABLE_MODEL = new ClientTableModel(CONTROLLER);
+    private final JTable TABLE = new JTable(TABLE_MODEL);
     
     public ClientList() {
         setSize(900, 700);
@@ -58,33 +58,31 @@ public class ClientList extends JFrame{
     }
 
     private void createPanel() {
-        panelSouth.setLayout(new FlowLayout(FlowLayout.LEFT)); // FlowLayout - Coloca os componentes lado a lado
-        add(panelSouth, "South");
-        panelSouth.setBackground(new ColorUIResource(130, 188, 224));
-        panelSouth.add(btnNew);
-        panelSouth.add(btnUpdate);
-        panelSouth.add(btnDelete);
-        panelSouth.add(btnExit);
+        PANEL_SOUTH.setLayout(new FlowLayout(FlowLayout.LEFT)); // FlowLayout - Coloca os componentes lado a lado
+        add(PANEL_SOUTH, "South");
+        PANEL_SOUTH.setBackground(new ColorUIResource(130, 188, 224));
+        PANEL_SOUTH.add(BTN_NEW);
+        PANEL_SOUTH.add(BTN_UPDATE);
+        PANEL_SOUTH.add(BTN_DELETE);
+        PANEL_SOUTH.add(BTN_EXIT);
 
-        // Configuração dos botões
-        btnNew.addActionListener(controller);
-        btnNew.setName("new");
-        btnNew.setMnemonic('N');
-        btnNew.setToolTipText("Criar um novo cliente (ALT + N)");
-        btnUpdate.addActionListener(controller);
-        btnUpdate.setName("update");
-        btnUpdate.setMnemonic('A');
-        btnUpdate.setToolTipText("Alterar um cliente (ALT + A)");
-        btnDelete.addActionListener(controller);
-        btnDelete.setName("delete");
-        btnDelete.setMnemonic('E');
-        btnDelete.setToolTipText("Excluir um cliente (ALT + E)");
-        btnExit.addActionListener(controller);
-        btnExit.setName("exit");
-        btnExit.setToolTipText("Sair do programa");
+        BTN_NEW.addActionListener(CONTROLLER);
+        BTN_NEW.setName("new");
+        BTN_NEW.setMnemonic('N');
+        BTN_NEW.setToolTipText("Criar um novo cliente (ALT + N)");
+        BTN_UPDATE.addActionListener(CONTROLLER);
+        BTN_UPDATE.setName("update");
+        BTN_UPDATE.setMnemonic('A');
+        BTN_UPDATE.setToolTipText("Alterar um cliente (ALT + A)");
+        BTN_DELETE.addActionListener(CONTROLLER);
+        BTN_DELETE.setName("delete");
+        BTN_DELETE.setMnemonic('E');
+        BTN_DELETE.setToolTipText("Excluir um cliente (ALT + E)");
+        BTN_EXIT.addActionListener(CONTROLLER);
+        BTN_EXIT.setName("exit");
+        BTN_EXIT.setToolTipText("Sair do programa");
 
-        // Barra de rolagem VERTICAL
-        JScrollPane panelCenter = new JScrollPane(tabel);
+        JScrollPane panelCenter = new JScrollPane(TABLE);
         panelCenter.setBackground(Color.lightGray);
         panelCenter.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         
@@ -92,10 +90,11 @@ public class ClientList extends JFrame{
     }
 
     public void updateTable() {
-        model.fireTableDataChanged();
+        TABLE_MODEL.fireTableDataChanged();
     }
 
     public int rowNumber() {
-        return tabel.getSelectedRow();
+        return TABLE.getSelectedRow();
     }
+
 }

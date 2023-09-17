@@ -28,9 +28,7 @@ package br.univille.registrationsystem.exceptions;
 public class InvalidValueException extends Exception{
 
     public InvalidValueException(String message, Exception origin) {
-
         super(message, origin);
-
     }
 
 }

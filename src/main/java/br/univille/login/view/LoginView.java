@@ -44,15 +44,15 @@ import java.awt.GridBagConstraints;
 
 public class LoginView extends JFrame{
 
-    private final JPanel south = new JPanel();
-    private final JPanel center = new JPanel();
-    private final JLabel userLabel = new JLabel("Usuário");
-    private final JLabel passLabel = new JLabel("Senha");
-    private final JTextField userField = new JTextField(20);
-    private final JPasswordField passwordField = new JPasswordField(20);
-    private final JButton registerButton = new JButton("Registrar-se");
-    private final JButton enterButton = new JButton("Entrar");
-    private final LoginViewController control = new LoginViewController(this);
+    private final JPanel PANEL_SOUTH = new JPanel();
+    private final JPanel PANEL_CENTER = new JPanel();
+    private final JLabel USER_LABEL = new JLabel("Usuário");
+    private final JLabel PASSWORD_LABEL = new JLabel("Senha");
+    private final JTextField USER_FIELD = new JTextField(20);
+    private final JPasswordField PASSWORD_FIELD = new JPasswordField(20);
+    private final JButton REGISTER_BUTTON = new JButton("Registrar-se");
+    private final JButton ENTER_BUTTON = new JButton("Entrar");
+    private final LoginViewController CONTROLLER = new LoginViewController(this);
     
     public LoginView() {
         setSize(315, 300);
@@ -64,48 +64,48 @@ public class LoginView extends JFrame{
     }
 
     private void createView() {
-        add(south, "South");
-        south.setBackground(new ColorUIResource(130, 188, 224));
-        south.add(registerButton);
-        south.add(enterButton);
-        registerButton.setToolTipText("Cadastre um novo usuário (ALT + N)");
-        registerButton.setMnemonic('N');
-        registerButton.setName("register");
-        registerButton.addActionListener(control);
-        enterButton.setToolTipText("Entre com um usuário existente (ALT + E)");
-        enterButton.setMnemonic('E');
-        enterButton.setName("enter");
-        enterButton.addActionListener(control);
-        enterButton.addKeyListener(control);
-        passwordField.addKeyListener(control);
-        add(center, "Center");
-        center.setBorder(BorderFactory.createTitledBorder("Login"));
-        center.setLayout(new GridBagLayout());
+        add(PANEL_SOUTH, "South");
+        PANEL_SOUTH.setBackground(new ColorUIResource(130, 188, 224));
+        PANEL_SOUTH.add(REGISTER_BUTTON);
+        PANEL_SOUTH.add(ENTER_BUTTON);
+        REGISTER_BUTTON.setToolTipText("Cadastre um novo usuário (ALT + N)");
+        REGISTER_BUTTON.setMnemonic('N');
+        REGISTER_BUTTON.setName("register");
+        REGISTER_BUTTON.addActionListener(CONTROLLER);
+        ENTER_BUTTON.setToolTipText("Entre com um usuário existente (ALT + E)");
+        ENTER_BUTTON.setMnemonic('E');
+        ENTER_BUTTON.setName("enter");
+        ENTER_BUTTON.addActionListener(CONTROLLER);
+        ENTER_BUTTON.addKeyListener(CONTROLLER);
+        PASSWORD_FIELD.addKeyListener(CONTROLLER);
+        add(PANEL_CENTER, "Center");
+        PANEL_CENTER.setBorder(BorderFactory.createTitledBorder("Login"));
+        PANEL_CENTER.setLayout(new GridBagLayout());
         GridBagConstraints cons = new GridBagConstraints();
         // cons.fill = GridBagConstraints.HORIZONTAL;
         cons.insets = new InsetsUIResource(7, 7, 7, 7);
 
         cons.gridx = 0;
         cons.gridy = 0;
-        center.add(userLabel, cons);
+        PANEL_CENTER.add(USER_LABEL, cons);
 
         cons.gridx = 1;
         cons.gridy = 0;
-        center.add(userField, cons);
+        PANEL_CENTER.add(USER_FIELD, cons);
 
         cons.gridx = 0;
         cons.gridy = 1;
-        center.add(passLabel, cons);
+        PANEL_CENTER.add(PASSWORD_LABEL, cons);
 
         cons.gridx = 1;
         cons.gridy = 1;
-        center.add(passwordField, cons);
+        PANEL_CENTER.add(PASSWORD_FIELD, cons);
     }
 
     public Login getLogin() {
         Login log = new Login();
-        log.setUser(userField.getText());
-        String pass = new String(passwordField.getPassword());
+        log.setUser(USER_FIELD.getText());
+        String pass = new String(PASSWORD_FIELD.getPassword());
         log.setPassword(pass);
 
         return log;
