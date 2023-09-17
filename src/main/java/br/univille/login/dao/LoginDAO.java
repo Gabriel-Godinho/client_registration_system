@@ -30,6 +30,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import br.univille.connection.ConnectionDB;
 import br.univille.login.entitys.Login;
 
 public class LoginDAO {

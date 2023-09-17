@@ -23,7 +23,7 @@
  * THE SOFTWARE.
  * =====LICENSE-END=====
  */
-package br.univille.login.dao;
+package br.univille.connection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -33,16 +33,16 @@ public class ConnectionDB {
 
     private final Connection conn;
     private static ConnectionDB instance;
-
-    private ConnectionDB() throws SQLException {
-        final String connection = "jdbc:mariadb://localhost/loginsistem";
+    
+    private ConnectionDB() throws SQLException{
+        final String stringConexao = "jdbc:mariadb://localhost/loginsistem";
         final String user = "root";
         final String pass = "univille";
-        this.conn = DriverManager.getConnection(connection, user, pass);
+        this.conn = DriverManager.getConnection(stringConexao, user, pass);
     }
 
-    public static ConnectionDB getInstance() throws SQLException {
-        if (instance == null) instance = new ConnectionDB();
+    public static ConnectionDB getInstance() throws SQLException{
+        if(instance == null) instance = new ConnectionDB();
         
         return instance;
     }
@@ -50,5 +50,5 @@ public class ConnectionDB {
     public Connection getConn() {
         return this.conn;
     }
-    
+
 }

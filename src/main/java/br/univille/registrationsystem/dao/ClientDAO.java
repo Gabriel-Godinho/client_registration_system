@@ -33,6 +33,7 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
+import br.univille.connection.ConnectionDB;
 import br.univille.registrationsystem.entity.Client;
 
 public class ClientDAO {
